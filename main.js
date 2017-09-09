@@ -2,6 +2,8 @@
  * Created by barto on 09.09.17.
  */
 
+var clickCounter = 0;
+
 var plots = [
 	{
 		'id': 1, 'leftPosition': 341, 'topPosition': 614, 'align': 'bottom-right'
@@ -62,13 +64,16 @@ var waterfallPond = {'id': 27, 'leftPosition': 374, 'topPosition': 570, 'align':
 
 $(document).ready(function (e) {
 	showPlots();
+
+	$(document.body).click(function (e) {
+		clickCounter++;
+	});
 });
 
 function showPlots() {
 	$('[id^="plotA-"]').remove();
 
 	var plotBorder = $('.plot').css('border-width');
-	console.log(plotBorder);
 	plotBorder = plotBorder.slice(0, -2);
 	plotBorder = parseInt(plotBorder);
 	var numberOfPlots = 0;
