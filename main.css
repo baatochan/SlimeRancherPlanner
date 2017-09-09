@@ -16,151 +16,19 @@ body {
     display: table;
 }
 
-/*region #plot-1...27*/
-
-#plot-1 {
-    left: 340px;
-    top: 613px;
+#plotTemplate {
+    display: none;
 }
 
-#plot-2 {
-    left: 340px;
-    top: 654px;
-}
-
-#plot-3 {
-    left: 380px;
-    top: 613px;
-}
-
-#plot-4 {
-    left: 380px;
-    top: 653px;
-}
-
-#plot-5 {
-    left: 440px;
-    top: 364px;
-}
-
-#plot-6 {
-    left: 488px;
-    top: 267px;
-}
-
-#plot-7 {
-    left: 551px;
-    top: 269px;
-}
-
-#plot-8 {
-    left: 560px;
-    top: 362px;
-}
-
-#plot-9 {
-    left: 775px;
-    top: 191px;
-}
-
-#plot-10 {
-    left: 774px;
-    top: 231px;
-}
-
-#plot-11 {
-    left: 892px;
-    top: 190px;
-}
-
-#plot-12 {
-    left: 892px;
-    top: 231px;
-}
-
-#plot-13 {
-    left: 892px;
-    top: 317px;
-}
-
-#plot-14 {
-    left: 933px;
-    top: 190px;
-}
-
-#plot-15 {
-    left: 933px;
-    top: 231px;
-}
-
-#plot-16 {
-    left: 933px;
-    top: 317px;
-}
-
-#plot-17 {
-    left: 1068px;
-    top: 594px;
-}
-
-#plot-18 {
-    left: 1068px;
-    top: 647px;
-}
-
-#plot-19 {
-    left: 1107px;
-    top: 594px;
-}
-
-#plot-20 {
-    left: 1107px;
-    top: 647px;
-}
-
-#plot-21 {
-    left: 1149px;
-    top: 707px;
-}
-
-#plot-22 {
-    left: 1151px;
-    top: 232px;
-}
-
-#plot-23 {
-    left: 1166px;
-    top: 304px;
-}
-
-#plot-24 {
-    left: 1217px;
-    top: 221px;
-}
-
-#plot-25 {
-    left: 1261px;
-    top: 247px;
-}
-
-#plot-26 {
-    left: 1257px;
-    top: 324px;
-}
-
-#plot-27 {
-    left: 373px;
-    top: 569px;
+#waterfall {
     opacity: 0;
 
 }
 
-#plot-27:hover {
+#waterfall:hover {
     opacity: 1;
     border: yellow solid 1px;
 }
-
-/*endregion*/
 
 .plotNumber {
     text-align: center;
