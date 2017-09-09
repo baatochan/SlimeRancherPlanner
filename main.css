@@ -8,12 +8,12 @@ body {
 .plot {
     position: absolute;
     margin: 0;
-    /*padding: 2px; /*TODO*/
     background: rgba(255, 255, 255, 0.3);
     width: 25px;
     height: 25px;
     border: rgba(0, 0, 0, 0.5) solid 1px;
-    display: table;
+    border-radius: 3px;
+    box-sizing: content-box;
 }
 
 #plotTemplate {
@@ -32,8 +32,9 @@ body {
 
 .plotNumber {
     text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
 }
 

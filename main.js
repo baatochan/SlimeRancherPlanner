@@ -57,16 +57,27 @@ var plots = [
 		'id': 25, 'leftPosition': 1262, 'topPosition': 248, 'align': 'top-left'
 	}, {
 		'id': 26, 'leftPosition': 1258, 'topPosition': 325, 'align': 'top-left'
+	}, {
+		'id': 'W', 'leftPosition': 374, 'topPosition': 570, 'align': 'bottom-right'
 	}
 ];
-
-var waterfallPond = {'id': 27, 'leftPosition': 374, 'topPosition': 570, 'align': 'bottom-right'};
 
 $(document).ready(function (e) {
 	showPlots();
 
-	$(document.body).click(function (e) {
-		clickCounter++;
+	$('[id^="plotA-"]').click(function (e) {
+		$('#setupPlot').modal('show');
+		var id = $(this).attr('id');
+		id = id.slice(6);
+		if (id === 'W') {
+			$('#setupPlotNumber').text('- waterfall');
+		} else {
+			$('#setupPlotNumber').text(id);
+		}
+	});
+
+	$('#firstChoice').change(function () {
+		// TODO!
 	});
 });
 
@@ -76,33 +87,25 @@ function showPlots() {
 	var plotBorder = $('.plot').css('border-width');
 	plotBorder = plotBorder.slice(0, -2);
 	plotBorder = parseInt(plotBorder);
-	var numberOfPlots = 0;
+	var plotTemplate = $('#plotTemplate');
 
-	$.each(plots, (key, value) => {
-		var plot = $('#plotTemplate').clone();
+
+	$.each(plots, function (key, value) {
+		var plot = plotTemplate.clone();
 		plot.attr('id', 'plotA-' + value.id);
 		plot.css('display', '');
 		plot.css('z-index', 0);
-		plot.find('.plot').attr('id', 'plot-' + value.id);
+		if (value.id === 'W') {
+			plot.find('.plot').attr('id', 'waterfall'); //BE CAREFULL IN FUTURE
+		} else {
+			plot.find('.plot').attr('id', 'plot-' + value.id);
+		}
 		var leftPosition = value.leftPosition - plotBorder;
 		var topPosition = value.topPosition - plotBorder;
 		plot.find('.plot').css('left', leftPosition + 'px');
 		plot.find('.plot').css('top', topPosition + 'px');
 		plot.find('.plotNumber').text(value.id);
-		numberOfPlots = value.id;
-		$('#plotTemplate').after(plot);
+		//numberOfPlots = value.id;
+		plotTemplate.after(plot);
 	});
-
-	var waterfallHTML = $('#plotTemplate').clone();
-	numberOfPlots++;
-	waterfallHTML.attr('id', 'plotA-' + numberOfPlots);
-	waterfallHTML.css('display', '');
-	waterfallHTML.css('z-index', 0);
-	waterfallHTML.find('.plot').attr('id', 'waterfall'); //BE CAREFULL IN FUTURE
-	var leftPosition = waterfallPond.leftPosition - plotBorder;
-	var topPosition = waterfallPond.topPosition - plotBorder;
-	waterfallHTML.find('.plot').css('left', leftPosition + 'px');
-	waterfallHTML.find('.plot').css('top', topPosition + 'px');
-	waterfallHTML.find('.plotNumber').text('W');
-	$('#plotTemplate').after(waterfallHTML);
 }
