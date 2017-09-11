@@ -2,7 +2,6 @@
  * Created by barto on 09.09.17.
  */
 
-var clickCounter = 0;
 var desiredWidth = 1680;
 var desiredHeight = 920;
 
@@ -127,7 +126,6 @@ function showPlots() {
 		plot.find('.plot').css('left', leftPosition + 'px');
 		plot.find('.plot').css('top', topPosition + 'px');
 		plot.find('.plotNumber').text(value.id);
-		//numberOfPlots = value.id;
 		plotTemplate.after(plot);
 	});
 }
