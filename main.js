@@ -11,7 +11,7 @@ var topOffset = 0;
 
 //region arrays
 
-var plots = [
+var defaultValuesPlots = [
 	{
 		'id': 1, 'leftPosition': 341, 'topPosition': 614, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null
 	}, {
@@ -69,6 +69,8 @@ var plots = [
 	}
 ];
 
+var plots;
+
 var slimeTypes = [
 	'Pink Slime',
 	'Rock Slime',
@@ -117,6 +119,7 @@ var meatTypes = [
 //endregion
 
 $(document).ready(function () {
+	plots = defaultValuesPlots;
 	calculateBodySize();
 	showPlots();
 	showMaximizedPlots();

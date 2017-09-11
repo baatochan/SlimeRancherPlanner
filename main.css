@@ -15,6 +15,22 @@ label {
 	margin-top: .5rem;
 }
 
+/* Export menu */
+
+#exportMenu {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 5px;
+	background-color: rgba(65, 82, 95, 0.7);
+	border: rgba(65, 82, 95, 0.7) solid 1px;
+	border-radius: 3px;
+}
+
+#exportMenu img {
+	width: 40px;
+}
+
 /* Small plots */
 
 .plot {
