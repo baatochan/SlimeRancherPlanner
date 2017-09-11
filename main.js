@@ -1,6 +1,7 @@
 /**
  * Created by barto on 09.09.17.
  */
+//TODO: COMMENTS
 
 var desiredWidth = 1680;
 var desiredHeight = 920;
@@ -233,8 +234,9 @@ function showMaximizedPlots() {
 		}
 	});
 
-	$('[id^="plotMaximizedA-"]').click(openEditForm);
-	$('[id^="plotMaximizedA-"]').mouseenter(moveToTop);
+	var allMaximizedPlots = $('[id^="plotMaximizedA-"]');
+	allMaximizedPlots.click(openEditForm);
+	allMaximizedPlots.mouseenter(moveToTop);
 }
 
 //endregion

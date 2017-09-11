@@ -1,3 +1,5 @@
+/* TODO: COMMENTS */
+
 body {
 	width: 1680px;
 	height: 920px;
@@ -62,26 +64,32 @@ a {
 	color: inherit;
 }
 
+/*noinspection CssUnusedSymbol*/
 .corral {
 	background-color: rgba(255, 192, 203, 0.7);
 }
 
+/*noinspection CssUnusedSymbol*/
 .garden {
 	background-color: rgba(0, 128, 0, 0.7);
 }
 
+/*noinspection CssUnusedSymbol*/
 .coop {
 	background-color: rgba(128, 128, 128, 0.7);
 }
 
+/*noinspection CssUnusedSymbol*/
 .pond {
 	background-color: rgba(0, 0, 255, 0.7);
 }
 
+/*noinspection CssUnusedSymbol*/
 .silo {
 	background-color: rgba(205, 133, 63, 0.7);
 }
 
+/*noinspection CssUnusedSymbol*/
 .incinerator {
 	background-color: rgba(255, 0, 0, 0.7);
 }
