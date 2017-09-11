@@ -234,6 +234,7 @@ function showMaximizedPlots() {
 	});
 
 	$('[id^="plotMaximizedA-"]').click(openEditForm);
+	$('[id^="plotMaximizedA-"]').mouseenter(moveToTop);
 }
 
 //endregion
@@ -453,3 +454,8 @@ function refreshForm() {
 }
 
 //endregion
+
+function moveToTop() {
+	$('.plotMaximized').css('z-index', 0);
+	$(this).find('.plotMaximized').css('z-index', 1);
+}
