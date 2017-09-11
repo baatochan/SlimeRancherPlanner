@@ -1,6 +1,7 @@
 /**
  * Created by barto on 09.09.17.
  */
+//TODO: SAVE AND LOAD FUNCTION
 
 var desiredWidth = 1680;
 var desiredHeight = 920;
