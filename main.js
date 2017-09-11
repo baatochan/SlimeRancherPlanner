@@ -1,7 +1,6 @@
 /**
  * Created by barto on 09.09.17.
  */
-//TODO: COMMENTS
 
 var desiredWidth = 1680;
 var desiredHeight = 920;
@@ -134,12 +133,18 @@ $(document).ready(function () {
 
 //region loadSite
 
+/**
+ * Refresh plot and big plot divs
+ */
 function reloadSite() {
 	calculateBodySize();
 	showPlots();
 	showMaximizedPlots()
 }
 
+/**
+ * Calculate offset for plot divs (map offset)
+ */
 function calculateBodySize() {
 	var actualWidth = window.innerWidth;
 	var actualHeight = window.innerHeight;
@@ -151,6 +156,9 @@ function calculateBodySize() {
 	$(document.body).css('height', actualHeight);
 }
 
+/**
+ * Create (or update) HTML for small plots
+ */
 function showPlots() {
 	var plotBorder = $('.plot').css('border-width');
 	plotBorder = plotBorder.slice(0, -2);
@@ -176,6 +184,9 @@ function showPlots() {
 	});
 }
 
+/**
+ * Create (or update) HTML for big plots
+ */
 function showMaximizedPlots() {
 	var plotBorder = $('.plotMaximized').css('border-width');
 	plotBorder = plotBorder.slice(0, -2);
@@ -269,61 +280,9 @@ function showMaximizedPlots() {
 
 //region setupAndEditForm
 
-function savePlot() {
-	var chosenFirstValue = $('#firstChoice').val();
-	var chosenSecondValue = $('#secondChoice').val();
-	var chosenThirdValue = $('#thirdChoice').val();
-
-	var id = $('#editedPlotNumber').val();
-	if (id === 'unselected') return;
-
-	$.each(plots, function (key, value) {
-		// noinspection EqualityComparisonWithCoercionJS
-		if (value.id == id) {
-			if (chosenFirstValue === 'unselected') {
-				value.occupied = false;
-				value.type = null;
-				value.firstItem = null;
-				value.secondItem = null;
-			} else if (chosenFirstValue === 'silo') {
-				value.occupied = true;
-				value.type = chosenFirstValue;
-				value.firstItem = null;
-				value.secondItem = null;
-			} else {
-				value.occupied = true;
-				value.type = chosenFirstValue;
-				if (chosenSecondValue === 'unselected') {
-					value.firstItem = null;
-					value.secondItem = null;
-				} else {
-					value.firstItem = chosenSecondValue;
-					if (chosenThirdValue !== 'unselected' && chosenFirstValue === 'corral') value.secondItem = chosenThirdValue;
-				}
-			}
-		}
-	});
-	reloadSite();
-	$('#setupPlot').modal('hide');
-}
-
-function clearPlot() {
-	var id = $('#editedPlotNumber').val();
-	if (id !== 'unselected') {
-		$.each(plots, function (key, value) {
-			// noinspection EqualityComparisonWithCoercionJS
-			if (value.id == id) {
-				value.occupied = false;
-				value.type = null;
-				value.firstItem = null;
-				value.secondItem = null;
-			}
-		});
-	}
-	reloadSite();
-	$('#setupPlot').modal('hide');
-}
-
+/**
+ * Open form for setting up small plot
+ */
 function openSetUpForm() {
 	$('#setupPlot').modal('show');
 	refreshForm();
@@ -337,6 +296,9 @@ function openSetUpForm() {
 	}
 }
 
+/**
+ * Open form for editing set plot (big)
+ */
 function openEditForm() {
 	$('#setupPlot').modal('show');
 	refreshForm();
@@ -379,6 +341,21 @@ function openEditForm() {
 	});
 }
 
+/**
+ * Restore form to untouched state
+ */
+function refreshForm() {
+	$('#firstChoice').val('unselected');
+	$('#secondChoiceLabel').css('display', 'none');
+	$('#secondChoice').css('display', 'none');
+	$('#thirdChoice').css('display', 'none');
+	$('#thirdChoiceLabel').css('display', 'none');
+	$('#choiceError').css('display', 'none');
+}
+
+/**
+ * Decide what items to load based on user input, show fields
+ */
 function loadSecondAndThirdChoice() {
 	var chosenFirstValue = $('#firstChoice').val();
 
@@ -438,6 +415,11 @@ function loadSecondAndThirdChoice() {
 	}
 }
 
+/**
+ * Load items based on user input
+ * @param type of items to load
+ * @param selectHTML select operator which load items to
+ */
 function updateOptions(type, selectHTML) {
 	selectHTML.find('option').remove();
 	selectHTML.append($('<option>', {
@@ -472,17 +454,72 @@ function updateOptions(type, selectHTML) {
 	}
 }
 
-function refreshForm() {
-	$('#firstChoice').val('unselected');
-	$('#secondChoiceLabel').css('display', 'none');
-	$('#secondChoice').css('display', 'none');
-	$('#thirdChoice').css('display', 'none');
-	$('#thirdChoiceLabel').css('display', 'none');
-	$('#choiceError').css('display', 'none');
+/**
+ * Unset plot
+ */
+function clearPlot() {
+	var id = $('#editedPlotNumber').val();
+	if (id !== 'unselected') {
+		$.each(plots, function (key, value) {
+			// noinspection EqualityComparisonWithCoercionJS
+			if (value.id == id) {
+				value.occupied = false;
+				value.type = null;
+				value.firstItem = null;
+				value.secondItem = null;
+			}
+		});
+	}
+	reloadSite();
+	$('#setupPlot').modal('hide');
+}
+
+/**
+ * Save data from form
+ */
+function savePlot() {
+	var chosenFirstValue = $('#firstChoice').val();
+	var chosenSecondValue = $('#secondChoice').val();
+	var chosenThirdValue = $('#thirdChoice').val();
+
+	var id = $('#editedPlotNumber').val();
+	if (id === 'unselected') return;
+
+	$.each(plots, function (key, value) {
+		// noinspection EqualityComparisonWithCoercionJS
+		if (value.id == id) {
+			if (chosenFirstValue === 'unselected') {
+				value.occupied = false;
+				value.type = null;
+				value.firstItem = null;
+				value.secondItem = null;
+			} else if (chosenFirstValue === 'silo') {
+				value.occupied = true;
+				value.type = chosenFirstValue;
+				value.firstItem = null;
+				value.secondItem = null;
+			} else {
+				value.occupied = true;
+				value.type = chosenFirstValue;
+				if (chosenSecondValue === 'unselected') {
+					value.firstItem = null;
+					value.secondItem = null;
+				} else {
+					value.firstItem = chosenSecondValue;
+					if (chosenThirdValue !== 'unselected' && chosenFirstValue === 'corral') value.secondItem = chosenThirdValue;
+				}
+			}
+		}
+	});
+	reloadSite();
+	$('#setupPlot').modal('hide');
 }
 
 //endregion
 
+/**
+ * Change z-index of big plot that mouse is already at to be on top
+ */
 function moveToTop() {
 	$('.plotMaximized').css('z-index', 0);
 	$(this).find('.plotMaximized').css('z-index', 1);

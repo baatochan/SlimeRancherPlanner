@@ -1,4 +1,4 @@
-/* TODO: COMMENTS */
+/* Basic css */
 
 body {
 	width: 1680px;
@@ -6,6 +6,16 @@ body {
 	margin: 0;
 	background: url("img/map.png") no-repeat fixed center;
 }
+
+a {
+	color: inherit;
+}
+
+label {
+	margin-top: .5rem;
+}
+
+/* Small plots */
 
 .plot {
 	position: absolute;
@@ -18,27 +28,16 @@ body {
 	box-sizing: content-box; /* overriding bootstrap default */
 }
 
-.plotMaximized {
-	position: absolute;
-	margin: 0;
-	background: rgba(255, 255, 255, 0.7);
-	width: 75px;
-	height: 75px;
-	border: rgba(0, 0, 0, 1) solid 1px;
-	border-radius: 3px;
-	box-sizing: content-box;
-}
-
 #plotTemplate {
 	display: none;
 }
 
-#plotMaximizedTemplate {
-	display: none;
-}
-
-label {
-	margin-top: .5rem;
+.plotNumber {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
 }
 
 /*noinspection CssUnusedSymbol*/
@@ -52,16 +51,21 @@ label {
 	opacity: 1;
 }
 
-.plotNumber {
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-weight: bold;
+/* Big plots */
+
+.plotMaximized {
+	position: absolute;
+	margin: 0;
+	background: rgba(255, 255, 255, 0.7);
+	width: 75px;
+	height: 75px;
+	border: rgba(0, 0, 0, 1) solid 1px;
+	border-radius: 3px;
+	box-sizing: content-box;
 }
 
-a {
-	color: inherit;
+#plotMaximizedTemplate {
+	display: none;
 }
 
 /*noinspection CssUnusedSymbol*/

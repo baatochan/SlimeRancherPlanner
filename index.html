@@ -1,24 +1,29 @@
-<!--TODO: COMMENTS-->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<title>Slime Rancher Planner</title>
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 		<link href="main.css" rel="stylesheet">
-		<title>Slime Rancher Planner</title>
+
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 		<script src="main.js"></script>
 	</head>
 	<body>
+		<!-- Place for plot divs (small with number - empty) -->
 		<div id="plots">
 			<a href="#" id="plotTemplate"><div class="plot"><p class="plotNumber"></p></div></a>
 		</div>
+		<!-- Place for big plot div (when set up) -->
 		<div id="plotsMaximized">
 			<a href="#" id="plotMaximizedTemplate">
 				<div class="plotMaximized">
+					<!-- Title of plot -->
 					<p class=plotType></p>
+					<!-- Place for 2 items inside plot -->
 					<div class="corralContent">
 						<div class="corralContentFirstItem"></div>
 						<div class="corralContentPlus">
@@ -27,10 +32,12 @@
 						<div class="corralContentSecondItem"></div>
 						<div style="clear: both; float: none;"></div>
 					</div>
+					<!-- Place for 1 item inside plot-->
 					<div class="plotContent"></div>
 				</div>
 			</a>
 		</div>
+		<!-- Modal with form for setting up/editing plot -->
 		<div id="setupPlot" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
