@@ -63,7 +63,31 @@ a {
 }
 
 #choiceError {
-    color: red;
-    margin-bottom: 0.5rem;
-    display: none;
+	color: red;
+	margin-bottom: 0.5rem;
+	display: none;
+}
+
+.corral {
+	background-color: rgba(255, 192, 203, 0.7);
+}
+
+.garden {
+	background-color: rgba(0, 128, 0, 0.7);
+}
+
+.coop {
+	background-color: rgba(128, 128, 128, 0.7);
+}
+
+.pond {
+	background-color: rgba(0, 0, 255, 0.7);
+}
+
+.silo {
+	background-color: rgba(205, 133, 63, 0.7);
+}
+
+.incinerator {
+	background-color: rgba(255, 0, 0, 0.7);
 }

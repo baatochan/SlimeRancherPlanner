@@ -152,7 +152,7 @@ function savePlot() {
 				}
 			}
 		});
-		showPlots();
+		//showPlots();
 		showMaximizedPlots();
 		$('#setupPlot').modal('hide');
 		return;
@@ -288,7 +288,7 @@ function calculateBodySize() {
 }
 
 function showPlots() {
-	$('[id^="plotA-"]').remove();
+	$('[id^="plotA-"]').remove(); //TODO: BREAKS EVENT LISTENER
 
 	var plotBorder = $('.plot').css('border-width');
 	plotBorder = plotBorder.slice(0, -2);
@@ -312,7 +312,7 @@ function showPlots() {
 }
 
 function showMaximizedPlots() {
-	$('[id^="plotMaximizedA-"]').remove();
+	$('[id^="plotMaximizedA-"]').remove(); //TODO: BREAKS EVENT LISTENER
 
 	var plotBorder = $('.plotMaximized').css('border-width');
 	plotBorder = plotBorder.slice(0, -2);
@@ -359,6 +359,7 @@ function showMaximizedPlots() {
 			var topPosition = value.topPosition + topOffset + topAlignOffset - plotBorder;
 			plot.find('.plotMaximized').css('left', leftPosition + 'px');
 			plot.find('.plotMaximized').css('top', topPosition + 'px');
+			plot.find('.plotMaximized').addClass(value.type);
 			plotTemplate.after(plot);
 		}
 	});
