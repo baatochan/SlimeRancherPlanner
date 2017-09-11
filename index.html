@@ -26,6 +26,8 @@
 					</div>
 					<div class="modal-body">
 						<form class="form-group" id="editPlot">
+							<p id="choiceError">Select correct value!</p>
+							<input type="hidden" id="editedPlotNumber" value="unselected">
 							<div>
 								<label for="firstChoice" id="firstChoiceLabel">Type: </label>
 								<select class="form-control" id="firstChoice">
@@ -54,11 +56,11 @@
 					</div>
 					<div class="modal-footer">
 						<div style="flex: initial;">
-							<button type="button" class="btn btn-danger" style="float: left" data-dismiss="modal">Clear plot</button>
+							<button type="button" id="clearPlot" class="btn btn-danger">Clear plot</button>
 						</div>
 						<div style="flex: auto; text-align: right;">
 							<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-							<button type="submit" form="editPlot" value="Submit" class="btn btn-success" data-dismiss="modal">Save</button>
+							<button type="submit" id="savePlot" form="editPlot" value="Submit" class="btn btn-success">Save</button>
 						</div>
 					</div>
 				</div>

@@ -106,23 +106,83 @@ var meatTypes = [
 	'Painted Hen'
 ];
 
-$(document).ready(function (e) {
+$(document).ready(function () {
 	calculateBodySize();
 	showPlots();
-	showMiximizedPlots();
+	showMaximizedPlots();
 
 	$(window).resize(reloadSite);
 
 	$('[id^="plotA-"]').click(openForm);
 
 	$('#firstChoice').change(loadSecondAndThirdChoice);
+
+	$('#clearPlot').click(clearPlot);
+
+	$('#savePlot').click(savePlot);
 });
+
+function savePlot() {
+	var chosenFirstValue = $('#firstChoice').val();
+	var chosenSecondValue = $('#secondChoice').val();
+	var chosenThirdValue = $('#thirdChoice').val();
+	var valuesCorrect = false;
+
+	//check if values are corrected
+	if ((chosenFirstValue === 'corral' || chosenFirstValue === 'garden' || chosenFirstValue === 'coop') && chosenSecondValue !== 'unselected') {
+		valuesCorrect = true;
+	} else if (chosenFirstValue !== 'unselected' && chosenFirstValue !== 'corral' && chosenFirstValue !== 'garden' && chosenFirstValue !== 'coop') {
+		valuesCorrect = true;
+	}
+
+	var id = $('#editedPlotNumber').val();
+	if (id === 'unselected') valuesCorrect = false;
+
+	if (valuesCorrect) {
+		$.each(plots, function (key, value) {
+			// noinspection EqualityComparisonWithCoercionJS
+			if (value.id == id) {
+				value.occupied = true;
+				value.type = chosenFirstValue;
+				if (chosenFirstValue === 'corral' || chosenFirstValue === 'garden' || chosenFirstValue === 'coop') {
+					value.firstItem = chosenSecondValue;
+					if (chosenFirstValue === 'corral' && chosenThirdValue !== 'unselected') {
+						value.secondItem = chosenThirdValue;
+					}
+				}
+			}
+		});
+		showPlots();
+		showMaximizedPlots();
+		$('#setupPlot').modal('hide');
+		return;
+	}
+
+	$('#choiceError').css('display', 'block');
+}
+
+function clearPlot() {
+	var id = $('#editedPlotNumber').val();
+	if (id !== 'unselected') {
+		$.each(plots, function (key, value) {
+			// noinspection EqualityComparisonWithCoercionJS
+			if (value.id == id) {
+				value.occupied = false;
+				value.type = null;
+				value.firstItem = null;
+				value.secondItem = null;
+			}
+		});
+	}
+	$('#setupPlot').modal('hide');
+}
 
 function openForm() {
 	$('#setupPlot').modal('show');
 	refreshForm();
 	var id = $(this).attr('id');
 	id = id.slice(6);
+	$('#editedPlotNumber').val(id);
 	if (id === 'W') {
 		$('#setupPlotNumber').text('- waterfall');
 	} else {
@@ -131,12 +191,12 @@ function openForm() {
 }
 
 function loadSecondAndThirdChoice() {
-	var chosenFisrtValue = $('#firstChoice').val();
+	var chosenFirstValue = $('#firstChoice').val();
 	var secondChoiceLabel = $('#secondChoiceLabel');
 	var thirdChoiceLabel = $('#thirdChoiceLabel');
 	var secondChoice = $('#secondChoice');
 	var thirdChoice = $('#thirdChoice');
-	if (chosenFisrtValue === 'corral') {
+	if (chosenFirstValue === 'corral') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Slime type:');
 		thirdChoiceLabel.css('display', '');
@@ -145,24 +205,24 @@ function loadSecondAndThirdChoice() {
 		thirdChoice.css('display', '');
 		updateOptions('slimes', secondChoice);
 		updateOptions('slimes', thirdChoice);
-	} else if (chosenFisrtValue === 'garden') {
+	} else if (chosenFirstValue === 'garden') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Food type:');
 		secondChoice.css('display', '');
-		thirdChoiceLabel.css('display', 'none'); //dont know why, but it doesnt work without
+		thirdChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		thirdChoice.css('display', 'none');
 		thirdChoice.val('unselected');
 		updateOptions('food', secondChoice);
-	} else if (chosenFisrtValue === 'coop') {
+	} else if (chosenFirstValue === 'coop') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Meat type:');
 		secondChoice.css('display', '');
-		thirdChoiceLabel.css('display', 'none'); //dont know why, but it doesnt work without
+		thirdChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		thirdChoice.css('display', 'none');
 		thirdChoice.val('unselected');
 		updateOptions('meat', secondChoice);
 	} else {
-		secondChoiceLabel.css('display', 'none'); //dont know why, but it doesnt work without
+		secondChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		secondChoice.css('display', 'none');
 		secondChoice.val('unselected');
 		thirdChoiceLabel.css('display', 'none');
@@ -207,12 +267,13 @@ function refreshForm() {
 	$('#secondChoice').css('display', 'none');
 	$('#thirdChoice').css('display', 'none');
 	$('#thirdChoiceLabel').css('display', 'none');
+	$('#choiceError').css('display', 'none');
 }
 
 function reloadSite() {
 	calculateBodySize();
 	showPlots();
-	showMiximizedPlots()
+	showMaximizedPlots()
 }
 
 function calculateBodySize() {
@@ -250,7 +311,7 @@ function showPlots() {
 	});
 }
 
-function showMiximizedPlots() {
+function showMaximizedPlots() {
 	$('[id^="plotMaximizedA-"]').remove();
 
 	var plotBorder = $('.plotMaximized').css('border-width');
@@ -272,8 +333,6 @@ function showMiximizedPlots() {
 			plotSize = parseInt(plotSize);
 			var plotMaximizedSize = $('.plotMaximized').css('width');
 			plotMaximizedSize = parseInt(plotMaximizedSize);
-			console.log(plotSize);
-			console.log(plotMaximizedSize);
 			switch (value.align) {
 				case 'top-left':
 					leftAlignOffset = 0;
@@ -296,8 +355,6 @@ function showMiximizedPlots() {
 					topAlignOffset = (plotSize - plotMaximizedSize)/2;
 					break;
 			}
-			console.log(leftAlignOffset);
-			console.log(topAlignOffset);
 			var leftPosition = value.leftPosition + leftOffset + leftAlignOffset - plotBorder;
 			var topPosition = value.topPosition + topOffset + topAlignOffset - plotBorder;
 			plot.find('.plotMaximized').css('left', leftPosition + 'px');

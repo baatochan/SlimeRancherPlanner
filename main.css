@@ -39,11 +39,13 @@ label {
 	margin-top: .5rem;
 }
 
+/*noinspection CssUnusedSymbol*/
 #plot-W {
 	opacity: 0;
 	border: yellow solid 1px;
 }
 
+/*noinspection CssUnusedSymbol*/
 #plot-W:hover {
 	opacity: 1;
 }
@@ -58,4 +60,10 @@ label {
 
 a {
 	color: inherit;
+}
+
+#choiceError {
+    color: red;
+    margin-bottom: 0.5rem;
+    display: none;
 }
