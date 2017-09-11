@@ -10,7 +10,7 @@ var topOffset = 0;
 
 //region arrays
 
-var plots = [
+var defaultValuesPlots = [
 	{
 		'id': 1, 'leftPosition': 341, 'topPosition': 614, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null
 	}, {
@@ -68,6 +68,8 @@ var plots = [
 	}
 ];
 
+var plots;
+
 var slimeTypes = [
 	'Pink Slime',
 	'Rock Slime',
@@ -116,6 +118,8 @@ var meatTypes = [
 //endregion
 
 $(document).ready(function () {
+	plots = $.extend(true, [], defaultValuesPlots);
+
 	calculateBodySize();
 	showPlots();
 	showMaximizedPlots();
@@ -129,7 +133,102 @@ $(document).ready(function () {
 	$('#clearPlot').click(clearPlot);
 
 	$('#savePlot').click(savePlot);
+
+	$('#resetLink').click(resetData);
+
+	$('#exportLink').click(saveData);
+
+	$('#importLink').click(openImportModal);
+
+	$('#importDataButton').click(importDataFromText);
+
+	$('#importDataFileInput').on('change', importDataFromFile);
 });
+
+//region saveMenu
+
+/**
+ * Save plot array to file
+ */
+function saveData() {
+	$('#downloadData').modal('show');
+
+	var downloadLink = $('#downloadButton');
+	downloadLink.attr('download', 'export.txt');
+	downloadLink.attr('href', 'data:text/plain;base64,' + btoa(JSON.stringify(plots)));
+}
+
+/**
+ * Open the modal with textarea for stringified data to import
+ */
+function openImportModal() {
+	$('#importData').modal('show');
+	$('#importDataTextArea').val('');
+	// noinspection JSJQueryEfficiency
+	$('#importDataFileInput').val('');
+	$('#fileError').css('display', 'none');
+	var fileSupport = checkFileReaderSupport();
+	if(!fileSupport) {
+		$('#importDataFileInput').css('display', 'none');
+		$('#importDataTextInput').css('display', 'block');
+		$('#importDataButton').removeClass('disabled');
+	}
+}
+
+/**
+ * Check if browser support file input
+ * @returns {boolean} if browser support file input
+ */
+function checkFileReaderSupport() {
+	return !!(window.File && window.FileReader && window.FileList && window.Blob);
+}
+
+/**
+ * Import data from stringified data provided by user in textarea
+ */
+function importDataFromText() {
+	var dataToImport = $('#importDataTextArea').val(); //possibly may be changed to html5 client side file handling https://www.html5rocks.com/en/tutorials/file/dndfiles/
+	plots = JSON.parse(dataToImport);
+	reloadSite();
+	$('#importData').modal('hide');
+}
+
+/**
+ * Import data by uploading exported file
+ */
+function importDataFromFile() {
+	var file = this.files[0];
+	var textType = /text.*/;
+
+	if (file.type.match(textType)) {
+		var reader = new FileReader();
+
+		reader.onload = function () {
+			// noinspection JSCheckFunctionSignatures
+			plots = JSON.parse(reader.result);
+		};
+
+		reader.readAsText(file);
+	} else {
+		$('#fileError').css('display', 'block');
+		return;
+	}
+
+	setTimeout(function(){
+		reloadSite();
+	}, 800);
+	$('#importData').modal('hide');
+}
+
+/**
+ * Reset data to factory value
+ */
+function resetData() {
+	plots = $.extend(true, [], defaultValuesPlots); //plots = defaultValuesPlots doesn't make a copy, it points to the same array
+	reloadSite();
+}
+
+//endregion
 
 //region loadSite
 
