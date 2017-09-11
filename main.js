@@ -176,6 +176,7 @@ function showPlots() {
 }
 
 function showMaximizedPlots() {
+	//TODO: SHOW CONTENT OF PLOT
 	var plotBorder = $('.plotMaximized').css('border-width');
 	plotBorder = plotBorder.slice(0, -2);
 	plotBorder = parseInt(plotBorder);
