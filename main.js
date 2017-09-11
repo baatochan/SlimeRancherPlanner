@@ -3,6 +3,11 @@
  */
 
 var clickCounter = 0;
+var desiredWidth = 1680;
+var desiredHeight = 920;
+
+var leftOffset = 0;
+var topOffset = 0;
 
 var plots = [
 	{
@@ -63,7 +68,13 @@ var plots = [
 ];
 
 $(document).ready(function (e) {
+	calculateBodySize();
 	showPlots();
+
+	$(window).resize(function () {
+		calculateBodySize();
+		showPlots();
+	});
 
 	$('[id^="plotA-"]').click(function (e) {
 		$('#setupPlot').modal('show');
@@ -80,6 +91,17 @@ $(document).ready(function (e) {
 		// TODO!
 	});
 });
+
+function calculateBodySize() {
+	var actualWidth = window.innerWidth;
+	var actualHeight = window.innerHeight;
+
+	leftOffset = (actualWidth-desiredWidth)/2;
+	topOffset = (actualHeight-desiredHeight)/2;
+
+	$(document.body).css('width', actualWidth);
+	$(document.body).css('height', actualHeight);
+}
 
 function showPlots() {
 	$('[id^="plotA-"]').remove();
@@ -100,8 +122,8 @@ function showPlots() {
 		} else {
 			plot.find('.plot').attr('id', 'plot-' + value.id);
 		}
-		var leftPosition = value.leftPosition - plotBorder;
-		var topPosition = value.topPosition - plotBorder;
+		var leftPosition = value.leftPosition + leftOffset - plotBorder;
+		var topPosition = value.topPosition + topOffset - plotBorder;
 		plot.find('.plot').css('left', leftPosition + 'px');
 		plot.find('.plot').css('top', topPosition + 'px');
 		plot.find('.plotNumber').text(value.id);
