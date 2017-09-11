@@ -20,12 +20,12 @@ body {
     display: none;
 }
 
-#waterfall {
+#plot-W {
     opacity: 0;
     border: yellow solid 1px;
 }
 
-#waterfall:hover {
+#plot-W:hover {
     opacity: 1;
 }
 

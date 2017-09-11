@@ -70,10 +70,7 @@ $(document).ready(function (e) {
 	calculateBodySize();
 	showPlots();
 
-	$(window).resize(function () {
-		calculateBodySize();
-		showPlots();
-	});
+	$(window).resize(reloadSite);
 
 	$('[id^="plotA-"]').click(function (e) {
 		$('#setupPlot').modal('show');
@@ -90,6 +87,11 @@ $(document).ready(function (e) {
 		// TODO!
 	});
 });
+
+function reloadSite() {
+	calculateBodySize();
+	showPlots();
+}
 
 function calculateBodySize() {
 	var actualWidth = window.innerWidth;
@@ -116,11 +118,7 @@ function showPlots() {
 		plot.attr('id', 'plotA-' + value.id);
 		plot.css('display', '');
 		plot.css('z-index', 0);
-		if (value.id === 'W') {
-			plot.find('.plot').attr('id', 'waterfall'); //BE CAREFULL IN FUTURE
-		} else {
-			plot.find('.plot').attr('id', 'plot-' + value.id);
-		}
+		plot.find('.plot').attr('id', 'plot-' + value.id);
 		var leftPosition = value.leftPosition + leftOffset - plotBorder;
 		var topPosition = value.topPosition + topOffset - plotBorder;
 		plot.find('.plot').css('left', leftPosition + 'px');
