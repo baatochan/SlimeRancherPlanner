@@ -122,7 +122,7 @@ $(document).ready(function () {
 
 	$(window).resize(reloadSite);
 
-	$('[id^="plotA-"]').click(openForm);
+	$('[id^="plotA-"]').click(openSetUpForm);
 
 	$('#firstChoice').change(loadSecondAndThirdChoice);
 
@@ -182,8 +182,8 @@ function showMaximizedPlots() {
 	var plotTemplate = $('#plotMaximizedTemplate');
 
 	$.each(plots, function (key, value) {
+		var plot = $('#plotMaximizedA-' + value.id);
 		if(value.occupied) {
-			var plot = $('#plotMaximizedA-' + value.id);
 			if (plot.length === 0) {
 				plot = plotTemplate.clone();
 				plot.attr('id', 'plotMaximizedA-' + value.id);
@@ -227,9 +227,12 @@ function showMaximizedPlots() {
 			plot.find('.plotMaximized').removeClass('corral garden coop pond silo incinerator');
 			plot.find('.plotMaximized').addClass(value.type);
 		} else {
+			plot.css('display', 'none');
 			$('#plotA-' + value.id).css('display', 'block');
 		}
 	});
+
+	$('[id^="plotMaximizedA-"]').click(openEditForm);
 }
 
 //endregion
@@ -287,10 +290,11 @@ function clearPlot() {
 			}
 		});
 	}
+	reloadSite();
 	$('#setupPlot').modal('hide');
 }
 
-function openForm() {
+function openSetUpForm() {
 	$('#setupPlot').modal('show');
 	refreshForm();
 	var id = $(this).attr('id');
@@ -301,6 +305,48 @@ function openForm() {
 	} else {
 		$('#setupPlotNumber').text(id);
 	}
+}
+
+function openEditForm() {
+	$('#setupPlot').modal('show');
+	refreshForm();
+	var id = $(this).attr('id');
+	id = id.slice(15);
+	$('#editedPlotNumber').val(id);
+	if (id === 'W') {
+		$('#setupPlotNumber').text('- waterfall');
+	} else {
+		$('#setupPlotNumber').text(id);
+	}
+
+	var firstChoice = $('#firstChoice');
+	var secondChoice = $('#secondChoice');
+	var thirdChoice = $('#thirdChoice');
+
+	$.each(plots, function (key, value) {
+		// noinspection EqualityComparisonWithCoercionJS
+		if (value.id == id) {
+			if (value.type !== null) {
+				firstChoice.val(value.type);
+				loadSecondAndThirdChoice();
+				if (value.firstItem !== null) {
+					secondChoice.val(value.firstItem);
+					if (value.secondItem !== null) {
+						thirdChoice.val(value.secondItem);
+					} else {
+						thirdChoice.val('unselected');
+					}
+				} else {
+					secondChoice.val('unselected');
+					thirdChoice.val('unselected');
+				}
+			} else {
+				firstChoice.val('unselected');
+				secondChoice.val('unselected');
+				thirdChoice.val('unselected');
+			}
+		}
+	});
 }
 
 function loadSecondAndThirdChoice() {
@@ -318,8 +364,8 @@ function loadSecondAndThirdChoice() {
 		thirdChoiceLabel.text('Second slime type: (if you intend to keep largos in here)');
 		secondChoice.css('display', '');
 		thirdChoice.css('display', '');
-		updateOptions('slimes', secondChoice);
-		updateOptions('slimes', thirdChoice);
+		updateOptions(chosenFirstValue, secondChoice);
+		updateOptions(chosenFirstValue, thirdChoice);
 	} else if (chosenFirstValue === 'garden') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Food type:');
@@ -327,7 +373,7 @@ function loadSecondAndThirdChoice() {
 		thirdChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		thirdChoice.css('display', 'none');
 		thirdChoice.val('unselected');
-		updateOptions('food', secondChoice);
+		updateOptions(chosenFirstValue, secondChoice);
 	} else if (chosenFirstValue === 'coop') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Meat type:');
@@ -335,7 +381,7 @@ function loadSecondAndThirdChoice() {
 		thirdChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		thirdChoice.css('display', 'none');
 		thirdChoice.val('unselected');
-		updateOptions('meat', secondChoice);
+		updateOptions(chosenFirstValue, secondChoice);
 	} else if (chosenFirstValue === 'pond') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Slime type:');
@@ -343,7 +389,7 @@ function loadSecondAndThirdChoice() {
 		thirdChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		thirdChoice.css('display', 'none');
 		thirdChoice.val('unselected');
-		updateOptions('water', secondChoice);
+		updateOptions(chosenFirstValue, secondChoice);
 	} else if (chosenFirstValue === 'incinerator') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Slime type:');
@@ -351,7 +397,7 @@ function loadSecondAndThirdChoice() {
 		thirdChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		thirdChoice.css('display', 'none');
 		thirdChoice.val('unselected');
-		updateOptions('fire', secondChoice);
+		updateOptions(chosenFirstValue, secondChoice);
 	} else {
 		secondChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		secondChoice.css('display', 'none');
@@ -371,15 +417,15 @@ function updateOptions(type, selectHTML) {
 
 	var array;
 
-	if (type === 'slimes') {
+	if (type === 'corral') {
 		array = slimeTypes;
-	} else if (type === 'food') {
+	} else if (type === 'garden') {
 		array = foodTypes;
-	} else if (type === 'meat') {
+	} else if (type === 'coop') {
 		array = meatTypes;
-	} else if (type === 'water') {
+	} else if (type === 'pond') {
 		array = waterSlimeTypes;
-	} else if (type === 'fire') {
+	} else if (type === 'incinerator') {
 		array = fireSlimeTypes;
 	} else {
 		array = null;
