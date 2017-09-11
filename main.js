@@ -119,7 +119,7 @@ var meatTypes = [
 //endregion
 
 $(document).ready(function () {
-	plots = defaultValuesPlots;
+	plots = $.extend(true, [], defaultValuesPlots);
 	calculateBodySize();
 	showPlots();
 	showMaximizedPlots();
@@ -133,7 +133,21 @@ $(document).ready(function () {
 	$('#clearPlot').click(clearPlot);
 
 	$('#savePlot').click(savePlot);
+
+	$('#resetLink').click(resetData);
 });
+
+//region saveMenu
+
+/**
+ * Reset data to factory value
+ */
+function resetData() {
+	plots = $.extend(true, [], defaultValuesPlots); //plots = defaultValuesPlots doesn't make a copy, it points to the same array
+	reloadSite();
+}
+
+//endregion
 
 //region loadSite
 
