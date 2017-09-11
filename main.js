@@ -177,7 +177,6 @@ function showPlots() {
 }
 
 function showMaximizedPlots() {
-	//TODO: SHOW CONTENT OF PLOT
 	var plotBorder = $('.plotMaximized').css('border-width');
 	plotBorder = plotBorder.slice(0, -2);
 	plotBorder = parseInt(plotBorder);
@@ -228,6 +227,33 @@ function showMaximizedPlots() {
 			plot.find('.plotMaximized').css('top', topPosition + 'px');
 			plot.find('.plotMaximized').removeClass('corral garden coop pond silo incinerator');
 			plot.find('.plotMaximized').addClass(value.type);
+			plot.find('.plotType').text(value.type);
+			plot.find('.plotType').css('display', 'block');
+			if(value.type === 'corral' && value.firstItem !== null && value.secondItem !== null) {
+				plot.find('.plotContent').css('display', 'none');
+				plot.find('.corralContentFirstItem').empty();
+				plot.find('.corralContentFirstItem').append($('<img>', {
+					src: 'img/plotItems/' + value.firstItem + '.png',
+					alt: value.firstItem
+				}));
+				plot.find('.corralContentSecondItem').empty();
+				plot.find('.corralContentSecondItem').append($('<img>', {
+					src: 'img/plotItems/' + value.secondItem + '.png',
+					alt: value.secondItem
+				}));
+				plot.find('.corralContent').css('display', 'flex');
+			} else if (value.firstItem !== null) {
+				plot.find('.corralContent').css('display', 'none');
+				plot.find('.plotContent').empty();
+				plot.find('.plotContent').append($('<img>', {
+					src: 'img/plotItems/' + value.firstItem + '.png',
+					alt: value.firstItem
+				}));
+				plot.find('.plotContent').css('display', 'flex');
+			} else {
+				plot.find('.corralContent').css('display', 'none');
+				plot.find('.plotContent').css('display', 'none');
+			}
 		} else {
 			plot.css('display', 'none');
 			$('#plotA-' + value.id).css('display', 'block');

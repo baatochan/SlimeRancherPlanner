@@ -93,3 +93,48 @@ a {
 .incinerator {
 	background-color: rgba(255, 0, 0, 0.7);
 }
+
+.plotType {
+	display: none;
+	text-transform: capitalize;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	color: black;
+	text-shadow: 0 0 10px white;
+	margin: 0;
+}
+
+.corralContent {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	height: 57px;
+}
+
+.corralContent img {
+	width: 30px;
+}
+
+.corralContent p {
+	margin: 0;
+}
+
+.corralContent div {
+	float: left;
+}
+
+.plotContent {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	height: 57px;
+}
+
+.plotContent div {
+	margin: 0;
+}
+
+.plotContent img {
+	width: 50px;
+}
