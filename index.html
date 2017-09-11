@@ -90,8 +90,47 @@
 						</div>
 						<div style="flex: auto; text-align: right;">
 							<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-							<button type="submit" id="savePlot" form="editPlot" value="Submit" class="btn btn-success">Save</button>
+							<button type="submit" id="savePlot" form="editPlot" class="btn btn-success">Save</button>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal with form for downloading data -->
+		<div id="downloadData" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Export data</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p style="text-align: left;">You're about to download exported copy of your settings. Save this file and during import you'll have to copy the whole content of it.</p>
+						<a class="btn btn-success" id="downloadButton">Download</a>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal with form for downloading data -->
+		<div id="importData" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Import data</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<form id="importDataForm">
+							<p><label for="importDataTextArea">Paste the content of exported file below.</label></p>
+							<textarea id="importDataTextArea"></textarea>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+						<button type="submit" id="importDataButton" form="importDataForm" class="btn btn-success">Load</button>
 					</div>
 				</div>
 			</div>

@@ -120,6 +120,7 @@ var meatTypes = [
 
 $(document).ready(function () {
 	plots = $.extend(true, [], defaultValuesPlots);
+
 	calculateBodySize();
 	showPlots();
 	showMaximizedPlots();
@@ -135,9 +136,44 @@ $(document).ready(function () {
 	$('#savePlot').click(savePlot);
 
 	$('#resetLink').click(resetData);
+
+	$('#exportLink').click(saveData);
+
+	$('#importLink').click(openImportModal);
+
+	$('#importDataButton').click(importData)
 });
 
 //region saveMenu
+
+/**
+ * Save plot array to file
+ */
+function saveData() {
+	$('#downloadData').modal('show');
+
+	var downloadLink = $('#downloadButton');
+	downloadLink.attr('download', 'export.txt');
+	downloadLink.attr('href', 'data:text/plain;base64,' + btoa(JSON.stringify(plots)));
+}
+
+/**
+ * Open the modal with textarea for stringified data to import
+ */
+function openImportModal() {
+	$('#importData').modal('show');
+	$('#importDataTextArea').val('');
+}
+
+/**
+ * Import data from stringified data provided by user in textarea
+ */
+function importData() {
+	var dataToImport = $('#importDataTextArea').val(); //possibly may be changed to html5 client side file handling https://www.html5rocks.com/en/tutorials/file/dndfiles/
+	plots = JSON.parse(dataToImport);
+	reloadSite();
+	$('#importData').modal('hide');
+}
 
 /**
  * Reset data to factory value

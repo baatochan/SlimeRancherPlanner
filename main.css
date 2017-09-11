@@ -27,6 +27,20 @@ label {
 	border-radius: 3px;
 }
 
+#downloadData .modal-body {
+	text-align: center;
+}
+
+#importData p {
+	margin: 0;
+}
+
+#importData textarea {
+	width: 100%;
+	height: 150px;
+	font-size: 12px;
+}
+
 #exportMenu img {
 	width: 40px;
 }
