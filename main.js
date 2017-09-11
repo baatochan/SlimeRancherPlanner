@@ -74,8 +74,6 @@ var slimeTypes = [
 	'Rad Slime',
 	'Honey Slime',
 	'Boom Slime',
-	'Puddle Slime',
-	'Fire Slime',
 	'Crystal Slime',
 	'Quantum Slime',
 	'Hunter Slime',
@@ -90,7 +88,6 @@ var foodTypes = [
 	'Oca Oca',
 	'Odd Onion',
 	'Silver Parsnip',
-	'Gilded Ginger',
 	'Pogofruit',
 	'Cuberry',
 	'Mint Mango',
@@ -191,6 +188,7 @@ function openForm() {
 }
 
 function loadSecondAndThirdChoice() {
+	//TODO: UPDATE POND AND Incinerator BEHAVIOR
 	var chosenFirstValue = $('#firstChoice').val();
 	var secondChoiceLabel = $('#secondChoiceLabel');
 	var thirdChoiceLabel = $('#thirdChoiceLabel');
