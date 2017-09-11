@@ -71,7 +71,7 @@ a {
 
 /*noinspection CssUnusedSymbol*/
 .garden {
-	background-color: rgba(0, 128, 0, 0.7);
+	background-color: rgba(173, 255, 47, 0.7);
 }
 
 /*noinspection CssUnusedSymbol*/
@@ -81,7 +81,7 @@ a {
 
 /*noinspection CssUnusedSymbol*/
 .pond {
-	background-color: rgba(0, 0, 255, 0.7);
+	background-color: rgba(0, 255, 255, 0.7);
 }
 
 /*noinspection CssUnusedSymbol*/
@@ -91,7 +91,7 @@ a {
 
 /*noinspection CssUnusedSymbol*/
 .incinerator {
-	background-color: rgba(255, 0, 0, 0.7);
+	background-color: rgba(220, 20, 60, 0.7);
 }
 
 .plotType {
