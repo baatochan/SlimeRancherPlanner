@@ -2,7 +2,7 @@ body {
 	width: 1680px;
 	height: 920px;
 	margin: 0;
-	background: url("map.png") no-repeat fixed center;
+	background: url("img/map.png") no-repeat fixed center;
 }
 
 .plot {
