@@ -131,6 +131,111 @@ $(document).ready(function () {
 	$('#savePlot').click(savePlot);
 });
 
+//region loadSite
+
+function reloadSite() {
+	calculateBodySize();
+	showPlots();
+	showMaximizedPlots()
+}
+
+function calculateBodySize() {
+	var actualWidth = window.innerWidth;
+	var actualHeight = window.innerHeight;
+
+	leftOffset = (actualWidth-desiredWidth)/2;
+	topOffset = (actualHeight-desiredHeight)/2;
+
+	$(document.body).css('width', actualWidth);
+	$(document.body).css('height', actualHeight);
+}
+
+function showPlots() {
+	var plotBorder = $('.plot').css('border-width');
+	plotBorder = plotBorder.slice(0, -2);
+	plotBorder = parseInt(plotBorder);
+	var plotTemplate = $('#plotTemplate');
+
+
+	$.each(plots, function (key, value) {
+		var plot = $('#plotA-' + value.id);
+		if (plot.length === 0) {
+			plot = plotTemplate.clone();
+			plot.attr('id', 'plotA-' + value.id);
+			plot.css('display', '');
+			plot.css('z-index', 0);
+			plot.find('.plot').attr('id', 'plot-' + value.id);
+			plot.find('.plotNumber').text(value.id);
+			plotTemplate.after(plot);
+		}
+		var leftPosition = value.leftPosition + leftOffset - plotBorder;
+		var topPosition = value.topPosition + topOffset - plotBorder;
+		plot.find('.plot').css('left', leftPosition + 'px');
+		plot.find('.plot').css('top', topPosition + 'px');
+	});
+}
+
+function showMaximizedPlots() {
+	var plotBorder = $('.plotMaximized').css('border-width');
+	plotBorder = plotBorder.slice(0, -2);
+	plotBorder = parseInt(plotBorder);
+	var plotTemplate = $('#plotMaximizedTemplate');
+
+	$.each(plots, function (key, value) {
+		if(value.occupied) {
+			var plot = $('#plotMaximizedA-' + value.id);
+			if (plot.length === 0) {
+				plot = plotTemplate.clone();
+				plot.attr('id', 'plotMaximizedA-' + value.id);
+				plot.css('z-index', 0);
+				plotTemplate.after(plot);
+			}
+			$('#plotA-' + value.id).css('display', 'none');
+			plot.css('display', '');
+			var leftAlignOffset = 0;
+			var topAlignOffset = 0;
+			var plotSize = $('.plot').css('width'); //it should be square so checking only one value
+			plotSize = parseInt(plotSize);
+			var plotMaximizedSize = $('.plotMaximized').css('width');
+			plotMaximizedSize = parseInt(plotMaximizedSize);
+			switch (value.align) {
+				case 'top-left':
+					leftAlignOffset = 0;
+					topAlignOffset = 0;
+					break;
+				case 'top-right':
+					leftAlignOffset = plotSize - plotMaximizedSize;
+					topAlignOffset = 0;
+					break;
+				case 'bottom-left':
+					leftAlignOffset = 0;
+					topAlignOffset = plotSize - plotMaximizedSize;
+					break;
+				case 'bottom-right':
+					leftAlignOffset = plotSize - plotMaximizedSize;
+					topAlignOffset = plotSize - plotMaximizedSize;
+					break;
+				case 'center':
+					leftAlignOffset = (plotSize - plotMaximizedSize)/2;
+					topAlignOffset = (plotSize - plotMaximizedSize)/2;
+					break;
+			}
+			var leftPosition = value.leftPosition + leftOffset + leftAlignOffset - plotBorder;
+			var topPosition = value.topPosition + topOffset + topAlignOffset - plotBorder;
+			plot.find('.plotMaximized').css('left', leftPosition + 'px');
+			plot.find('.plotMaximized').css('top', topPosition + 'px');
+			plot.find('.plotMaximized').removeClass('corral garden coop pond silo incinerator');
+			plot.find('.plotMaximized').addClass(value.type);
+		} else {
+			$('#plotA-' + value.id).css('display', 'block');
+		}
+	});
+}
+
+//endregion
+
+//region setupAndEditForm
+
 function savePlot() {
 	var chosenFirstValue = $('#firstChoice').val();
 	var chosenSecondValue = $('#secondChoice').val();
@@ -300,98 +405,4 @@ function refreshForm() {
 	$('#choiceError').css('display', 'none');
 }
 
-//TODO: REFRESH MAXIMIZED PLOTS
-function reloadSite() {
-	calculateBodySize();
-	showPlots();
-	showMaximizedPlots()
-}
-
-function calculateBodySize() {
-	var actualWidth = window.innerWidth;
-	var actualHeight = window.innerHeight;
-
-	leftOffset = (actualWidth-desiredWidth)/2;
-	topOffset = (actualHeight-desiredHeight)/2;
-
-	$(document.body).css('width', actualWidth);
-	$(document.body).css('height', actualHeight);
-}
-
-function showPlots() {
-	$('[id^="plotA-"]').remove(); //TODO: BREAKS EVENT LISTENER
-
-	var plotBorder = $('.plot').css('border-width');
-	plotBorder = plotBorder.slice(0, -2);
-	plotBorder = parseInt(plotBorder);
-	var plotTemplate = $('#plotTemplate');
-
-
-	$.each(plots, function (key, value) {
-		var plot = plotTemplate.clone();
-		plot.attr('id', 'plotA-' + value.id);
-		plot.css('display', '');
-		plot.css('z-index', 0);
-		plot.find('.plot').attr('id', 'plot-' + value.id);
-		var leftPosition = value.leftPosition + leftOffset - plotBorder;
-		var topPosition = value.topPosition + topOffset - plotBorder;
-		plot.find('.plot').css('left', leftPosition + 'px');
-		plot.find('.plot').css('top', topPosition + 'px');
-		plot.find('.plotNumber').text(value.id);
-		plotTemplate.after(plot);
-	});
-}
-
-function showMaximizedPlots() {
-	$('[id^="plotMaximizedA-"]').remove(); //TODO: BREAKS EVENT LISTENER
-
-	var plotBorder = $('.plotMaximized').css('border-width');
-	plotBorder = plotBorder.slice(0, -2);
-	plotBorder = parseInt(plotBorder);
-	var plotTemplate = $('#plotMaximizedTemplate');
-
-	$.each(plots, function (key, value) {
-		if(value.occupied) {
-			$('#plotA-' + value.id).css('display', 'none');
-			var plot = plotTemplate.clone();
-			plot.attr('id', 'plotMaximizedA-' + value.id);
-			plot.css('display', '');
-			plot.css('z-index', 0);
-			plot.find('.plotMaximized').attr('id', 'plotMaximized-' + value.id);
-			var leftAlignOffset = 0;
-			var topAlignOffset = 0;
-			var plotSize = $('.plot').css('width'); //it should be square so checking only one value
-			plotSize = parseInt(plotSize);
-			var plotMaximizedSize = $('.plotMaximized').css('width');
-			plotMaximizedSize = parseInt(plotMaximizedSize);
-			switch (value.align) {
-				case 'top-left':
-					leftAlignOffset = 0;
-					topAlignOffset = 0;
-					break;
-				case 'top-right':
-					leftAlignOffset = plotSize - plotMaximizedSize;
-					topAlignOffset = 0;
-					break;
-				case 'bottom-left':
-					leftAlignOffset = 0;
-					topAlignOffset = plotSize - plotMaximizedSize;
-					break;
-				case 'bottom-right':
-					leftAlignOffset = plotSize - plotMaximizedSize;
-					topAlignOffset = plotSize - plotMaximizedSize;
-					break;
-				case 'center':
-					leftAlignOffset = (plotSize - plotMaximizedSize)/2;
-					topAlignOffset = (plotSize - plotMaximizedSize)/2;
-					break;
-			}
-			var leftPosition = value.leftPosition + leftOffset + leftAlignOffset - plotBorder;
-			var topPosition = value.topPosition + topOffset + topAlignOffset - plotBorder;
-			plot.find('.plotMaximized').css('left', leftPosition + 'px');
-			plot.find('.plotMaximized').css('top', topPosition + 'px');
-			plot.find('.plotMaximized').addClass(value.type);
-			plotTemplate.after(plot);
-		}
-	});
-}
+//endregion
