@@ -27,6 +27,10 @@ label {
 	border-radius: 3px;
 }
 
+#exportMenu img {
+	width: 40px;
+}
+
 #downloadData .modal-body {
 	text-align: center;
 }
@@ -41,8 +45,9 @@ label {
 	font-size: 12px;
 }
 
-#exportMenu img {
-	width: 40px;
+#fileError {
+	color: red;
+	display: none;
 }
 
 /* Small plots */

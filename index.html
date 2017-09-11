@@ -124,13 +124,17 @@
 					</div>
 					<div class="modal-body">
 						<form id="importDataForm">
-							<p><label for="importDataTextArea">Paste the content of exported file below.</label></p>
-							<textarea id="importDataTextArea"></textarea>
+							<p id="fileError">File is not supported!</p>
+							<input type="file" id="importDataFileInput">
+							<div style="margin: 0; display: none;" id="importDataTextInput">
+								<p><label for="importDataTextArea">Paste the content of exported file below.</label></p>
+								<textarea id="importDataTextArea"></textarea>
+							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-						<button type="submit" id="importDataButton" form="importDataForm" class="btn btn-success">Load</button>
+						<button type="submit" id="importDataButton" form="importDataForm" class="btn btn-success disabled">Load</button>
 					</div>
 				</div>
 			</div>

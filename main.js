@@ -1,7 +1,6 @@
 /**
  * Created by barto on 09.09.17.
  */
-//TODO: SAVE AND LOAD FUNCTION
 
 var desiredWidth = 1680;
 var desiredHeight = 920;
@@ -141,7 +140,9 @@ $(document).ready(function () {
 
 	$('#importLink').click(openImportModal);
 
-	$('#importDataButton').click(importData)
+	$('#importDataButton').click(importDataFromText);
+
+	$('#importDataFileInput').on('change', importDataFromFile);
 });
 
 //region saveMenu
@@ -163,15 +164,59 @@ function saveData() {
 function openImportModal() {
 	$('#importData').modal('show');
 	$('#importDataTextArea').val('');
+	// noinspection JSJQueryEfficiency
+	$('#importDataFileInput').val('');
+	$('#fileError').css('display', 'none');
+	var fileSupport = checkFileReaderSupport();
+	if(!fileSupport) {
+		$('#importDataFileInput').css('display', 'none');
+		$('#importDataTextInput').css('display', 'block');
+		$('#importDataButton').removeClass('disabled');
+	}
+}
+
+/**
+ * Check if browser support file input
+ * @returns {boolean} if browser support file input
+ */
+function checkFileReaderSupport() {
+	return !!(window.File && window.FileReader && window.FileList && window.Blob);
 }
 
 /**
  * Import data from stringified data provided by user in textarea
  */
-function importData() {
+function importDataFromText() {
 	var dataToImport = $('#importDataTextArea').val(); //possibly may be changed to html5 client side file handling https://www.html5rocks.com/en/tutorials/file/dndfiles/
 	plots = JSON.parse(dataToImport);
 	reloadSite();
+	$('#importData').modal('hide');
+}
+
+/**
+ * Import data by uploading exported file
+ */
+function importDataFromFile() {
+	var file = this.files[0];
+	var textType = /text.*/;
+
+	if (file.type.match(textType)) {
+		var reader = new FileReader();
+
+		reader.onload = function () {
+			// noinspection JSCheckFunctionSignatures
+			plots = JSON.parse(reader.result);
+		};
+
+		reader.readAsText(file);
+	} else {
+		$('#fileError').css('display', 'block');
+		return;
+	}
+
+	setTimeout(function(){
+		reloadSite();
+	}, 800);
 	$('#importData').modal('hide');
 }
 
