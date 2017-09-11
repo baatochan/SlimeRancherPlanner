@@ -62,12 +62,6 @@ a {
 	color: inherit;
 }
 
-#choiceError {
-	color: red;
-	margin-bottom: 0.5rem;
-	display: none;
-}
-
 .corral {
 	background-color: rgba(255, 192, 203, 0.7);
 }

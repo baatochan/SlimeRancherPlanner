@@ -8,6 +8,8 @@ var desiredHeight = 920;
 var leftOffset = 0;
 var topOffset = 0;
 
+//region arrays
+
 var plots = [
 	{
 		'id': 1, 'leftPosition': 341, 'topPosition': 614, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null
@@ -82,6 +84,14 @@ var slimeTypes = [
 	'Tangle Slime'
 ];
 
+var waterSlimeTypes = [
+	'Puddle Slime'
+];
+
+var fireSlimeTypes = ['' +
+	'Fire Slime'
+];
+
 var foodTypes = [
 	'Carrot',
 	'Heart Beet',
@@ -103,6 +113,8 @@ var meatTypes = [
 	'Painted Hen'
 ];
 
+//endregion
+
 $(document).ready(function () {
 	calculateBodySize();
 	showPlots();
@@ -123,39 +135,38 @@ function savePlot() {
 	var chosenFirstValue = $('#firstChoice').val();
 	var chosenSecondValue = $('#secondChoice').val();
 	var chosenThirdValue = $('#thirdChoice').val();
-	var valuesCorrect = false;
-
-	//check if values are corrected
-	if ((chosenFirstValue === 'corral' || chosenFirstValue === 'garden' || chosenFirstValue === 'coop') && chosenSecondValue !== 'unselected') {
-		valuesCorrect = true;
-	} else if (chosenFirstValue !== 'unselected' && chosenFirstValue !== 'corral' && chosenFirstValue !== 'garden' && chosenFirstValue !== 'coop') {
-		valuesCorrect = true;
-	}
 
 	var id = $('#editedPlotNumber').val();
-	if (id === 'unselected') valuesCorrect = false;
+	if (id === 'unselected') return;
 
-	if (valuesCorrect) {
-		$.each(plots, function (key, value) {
-			// noinspection EqualityComparisonWithCoercionJS
-			if (value.id == id) {
+	$.each(plots, function (key, value) {
+		// noinspection EqualityComparisonWithCoercionJS
+		if (value.id == id) {
+			if (chosenFirstValue === 'unselected') {
+				value.occupied = false;
+				value.type = null;
+				value.firstItem = null;
+				value.secondItem = null;
+			} else if (chosenFirstValue === 'silo') {
 				value.occupied = true;
 				value.type = chosenFirstValue;
-				if (chosenFirstValue === 'corral' || chosenFirstValue === 'garden' || chosenFirstValue === 'coop') {
+				value.firstItem = null;
+				value.secondItem = null;
+			} else {
+				value.occupied = true;
+				value.type = chosenFirstValue;
+				if (chosenSecondValue === 'unselected') {
+					value.firstItem = null;
+					value.secondItem = null;
+				} else {
 					value.firstItem = chosenSecondValue;
-					if (chosenFirstValue === 'corral' && chosenThirdValue !== 'unselected') {
-						value.secondItem = chosenThirdValue;
-					}
+					if (chosenThirdValue !== 'unselected' && chosenFirstValue === 'corral') value.secondItem = chosenThirdValue;
 				}
 			}
-		});
-		//showPlots();
-		showMaximizedPlots();
-		$('#setupPlot').modal('hide');
-		return;
-	}
-
-	$('#choiceError').css('display', 'block');
+		}
+	});
+	reloadSite();
+	$('#setupPlot').modal('hide');
 }
 
 function clearPlot() {
@@ -188,12 +199,13 @@ function openForm() {
 }
 
 function loadSecondAndThirdChoice() {
-	//TODO: UPDATE POND AND Incinerator BEHAVIOR
 	var chosenFirstValue = $('#firstChoice').val();
+
 	var secondChoiceLabel = $('#secondChoiceLabel');
 	var thirdChoiceLabel = $('#thirdChoiceLabel');
 	var secondChoice = $('#secondChoice');
 	var thirdChoice = $('#thirdChoice');
+
 	if (chosenFirstValue === 'corral') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Slime type:');
@@ -219,6 +231,22 @@ function loadSecondAndThirdChoice() {
 		thirdChoice.css('display', 'none');
 		thirdChoice.val('unselected');
 		updateOptions('meat', secondChoice);
+	} else if (chosenFirstValue === 'pond') {
+		secondChoiceLabel.css('display', '');
+		secondChoiceLabel.text('Slime type:');
+		secondChoice.css('display', '');
+		thirdChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
+		thirdChoice.css('display', 'none');
+		thirdChoice.val('unselected');
+		updateOptions('water', secondChoice);
+	} else if (chosenFirstValue === 'incinerator') {
+		secondChoiceLabel.css('display', '');
+		secondChoiceLabel.text('Slime type:');
+		secondChoice.css('display', '');
+		thirdChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
+		thirdChoice.css('display', 'none');
+		thirdChoice.val('unselected');
+		updateOptions('fire', secondChoice);
 	} else {
 		secondChoiceLabel.css('display', 'none'); //don't know why, but it doesn't work without
 		secondChoice.css('display', 'none');
@@ -233,7 +261,7 @@ function updateOptions(type, selectHTML) {
 	selectHTML.find('option').remove();
 	selectHTML.append($('<option>', {
 		value: 'unselected',
-		text : 'Select type'
+		text : 'Empty'
 	}));
 
 	var array;
@@ -244,6 +272,10 @@ function updateOptions(type, selectHTML) {
 		array = foodTypes;
 	} else if (type === 'meat') {
 		array = meatTypes;
+	} else if (type === 'water') {
+		array = waterSlimeTypes;
+	} else if (type === 'fire') {
+		array = fireSlimeTypes;
 	} else {
 		array = null;
 	}
@@ -268,6 +300,7 @@ function refreshForm() {
 	$('#choiceError').css('display', 'none');
 }
 
+//TODO: REFRESH MAXIMIZED PLOTS
 function reloadSite() {
 	calculateBodySize();
 	showPlots();
