@@ -22,12 +22,11 @@ body {
 
 #waterfall {
     opacity: 0;
-
+    border: yellow solid 1px;
 }
 
 #waterfall:hover {
     opacity: 1;
-    border: yellow solid 1px;
 }
 
 .plotNumber {
