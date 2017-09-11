@@ -16,7 +16,22 @@ body {
 	box-sizing: content-box; /* overriding bootstrap default */
 }
 
+.plotMaximized {
+	position: absolute;
+	margin: 0;
+	background: rgba(255, 255, 255, 0.7);
+	width: 75px;
+	height: 75px;
+	border: rgba(0, 0, 0, 1) solid 1px;
+	border-radius: 3px;
+	box-sizing: content-box;
+}
+
 #plotTemplate {
+	display: none;
+}
+
+#plotMaximizedTemplate {
 	display: none;
 }
 

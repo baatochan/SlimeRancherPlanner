@@ -69,6 +69,7 @@ var plots = [
 $(document).ready(function (e) {
 	calculateBodySize();
 	showPlots();
+	showMiximizedPlots();
 
 	$(window).resize(reloadSite);
 
@@ -91,6 +92,7 @@ $(document).ready(function (e) {
 function reloadSite() {
 	calculateBodySize();
 	showPlots();
+	showMiximizedPlots()
 }
 
 function calculateBodySize() {
@@ -125,5 +127,62 @@ function showPlots() {
 		plot.find('.plot').css('top', topPosition + 'px');
 		plot.find('.plotNumber').text(value.id);
 		plotTemplate.after(plot);
+	});
+}
+
+function showMiximizedPlots() {
+	$('[id^="plotMaximizedA-"]').remove();
+
+	var plotBorder = $('.plotMaximized').css('border-width');
+	plotBorder = plotBorder.slice(0, -2);
+	plotBorder = parseInt(plotBorder);
+	var plotTemplate = $('#plotMaximizedTemplate');
+
+	$.each(plots, function (key, value) {
+		if(value.occupied) {
+			$('#plotA-' + value.id).css('display', 'none');
+			var plot = plotTemplate.clone();
+			plot.attr('id', 'plotMaximizedA-' + value.id);
+			plot.css('display', '');
+			plot.css('z-index', 0);
+			plot.find('.plotMaximized').attr('id', 'plotMaximized-' + value.id);
+			var leftAlignOffset = 0;
+			var topAlignOffset = 0;
+			var plotSize = $('.plot').css('width'); //it should be square so checking only one value
+			plotSize = parseInt(plotSize);
+			var plotMaximizedSize = $('.plotMaximized').css('width');
+			plotMaximizedSize = parseInt(plotMaximizedSize);
+			console.log(plotSize);
+			console.log(plotMaximizedSize);
+			switch (value.align) {
+				case 'top-left':
+					leftAlignOffset = 0;
+					topAlignOffset = 0;
+					break;
+				case 'top-right':
+					leftAlignOffset = plotSize - plotMaximizedSize;
+					topAlignOffset = 0;
+					break;
+				case 'bottom-left':
+					leftAlignOffset = 0;
+					topAlignOffset = plotSize - plotMaximizedSize;
+					break;
+				case 'bottom-right':
+					leftAlignOffset = plotSize - plotMaximizedSize;
+					topAlignOffset = plotSize - plotMaximizedSize;
+					break;
+				case 'center':
+					leftAlignOffset = (plotSize - plotMaximizedSize)/2;
+					topAlignOffset = (plotSize - plotMaximizedSize)/2;
+					break;
+			}
+			console.log(leftAlignOffset);
+			console.log(topAlignOffset);
+			var leftPosition = value.leftPosition + leftOffset + leftAlignOffset - plotBorder;
+			var topPosition = value.topPosition + topOffset + topAlignOffset - plotBorder;
+			plot.find('.plotMaximized').css('left', leftPosition + 'px');
+			plot.find('.plotMaximized').css('top', topPosition + 'px');
+			plotTemplate.after(plot);
+		}
 	});
 }
