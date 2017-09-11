@@ -66,6 +66,46 @@ var plots = [
 	}
 ];
 
+var slimeTypes = [
+	'Pink Slime',
+	'Rock Slime',
+	'Tabby Slime',
+	'Phosphor Slime',
+	'Rad Slime',
+	'Honey Slime',
+	'Boom Slime',
+	'Puddle Slime',
+	'Fire Slime',
+	'Crystal Slime',
+	'Quantum Slime',
+	'Hunter Slime',
+	'Mosaic Slime',
+	'Dervish Slime',
+	'Tangle Slime'
+];
+
+var foodTypes = [
+	'Carrot',
+	'Heart Beet',
+	'Oca Oca',
+	'Odd Onion',
+	'Silver Parsnip',
+	'Gilded Ginger',
+	'Pogofruit',
+	'Cuberry',
+	'Mint Mango',
+	'Phase Lemon',
+	'Prickle Pear'
+];
+
+var meatTypes = [
+	'Mixed',
+	'Hen Hen',
+	'Stony Hen',
+	'Briar Hen',
+	'Painted Hen'
+];
+
 $(document).ready(function (e) {
 	calculateBodySize();
 	showPlots();
@@ -73,21 +113,101 @@ $(document).ready(function (e) {
 
 	$(window).resize(reloadSite);
 
-	$('[id^="plotA-"]').click(function (e) {
-		$('#setupPlot').modal('show');
-		var id = $(this).attr('id');
-		id = id.slice(6);
-		if (id === 'W') {
-			$('#setupPlotNumber').text('- waterfall');
-		} else {
-			$('#setupPlotNumber').text(id);
-		}
-	});
+	$('[id^="plotA-"]').click(openForm);
 
-	$('#firstChoice').change(function () {
-		// TODO!
-	});
+	$('#firstChoice').change(loadSecondAndThirdChoice);
 });
+
+function openForm() {
+	$('#setupPlot').modal('show');
+	refreshForm();
+	var id = $(this).attr('id');
+	id = id.slice(6);
+	if (id === 'W') {
+		$('#setupPlotNumber').text('- waterfall');
+	} else {
+		$('#setupPlotNumber').text(id);
+	}
+}
+
+function loadSecondAndThirdChoice() {
+	var chosenFisrtValue = $('#firstChoice').val();
+	var secondChoiceLabel = $('#secondChoiceLabel');
+	var thirdChoiceLabel = $('#thirdChoiceLabel');
+	var secondChoice = $('#secondChoice');
+	var thirdChoice = $('#thirdChoice');
+	if (chosenFisrtValue === 'corral') {
+		secondChoiceLabel.css('display', '');
+		secondChoiceLabel.text('Slime type:');
+		thirdChoiceLabel.css('display', '');
+		thirdChoiceLabel.text('Second slime type: (if you intend to keep largos in here)');
+		secondChoice.css('display', '');
+		thirdChoice.css('display', '');
+		updateOptions('slimes', secondChoice);
+		updateOptions('slimes', thirdChoice);
+	} else if (chosenFisrtValue === 'garden') {
+		secondChoiceLabel.css('display', '');
+		secondChoiceLabel.text('Food type:');
+		secondChoice.css('display', '');
+		thirdChoiceLabel.css('display', 'none'); //dont know why, but it doesnt work without
+		thirdChoice.css('display', 'none');
+		thirdChoice.val('unselected');
+		updateOptions('food', secondChoice);
+	} else if (chosenFisrtValue === 'coop') {
+		secondChoiceLabel.css('display', '');
+		secondChoiceLabel.text('Meat type:');
+		secondChoice.css('display', '');
+		thirdChoiceLabel.css('display', 'none'); //dont know why, but it doesnt work without
+		thirdChoice.css('display', 'none');
+		thirdChoice.val('unselected');
+		updateOptions('meat', secondChoice);
+	} else {
+		secondChoiceLabel.css('display', 'none'); //dont know why, but it doesnt work without
+		secondChoice.css('display', 'none');
+		secondChoice.val('unselected');
+		thirdChoiceLabel.css('display', 'none');
+		thirdChoice.css('display', 'none');
+		thirdChoice.val('unselected');
+	}
+}
+
+function updateOptions(type, selectHTML) {
+	selectHTML.find('option').remove();
+	selectHTML.append($('<option>', {
+		value: 'unselected',
+		text : 'Select type'
+	}));
+
+	var array;
+
+	if (type === 'slimes') {
+		array = slimeTypes;
+	} else if (type === 'food') {
+		array = foodTypes;
+	} else if (type === 'meat') {
+		array = meatTypes;
+	} else {
+		array = null;
+	}
+
+	if (array !== null) {
+		$.each(array, function (key, type) {
+			var value = type.replace(/\s/g, "-").toLowerCase();
+			selectHTML.append($('<option>', {
+				value: value,
+				text : type
+			}));
+		})
+	}
+}
+
+function refreshForm() {
+	$('#firstChoice').val('unselected');
+	$('#secondChoiceLabel').css('display', 'none');
+	$('#secondChoice').css('display', 'none');
+	$('#thirdChoice').css('display', 'none');
+	$('#thirdChoiceLabel').css('display', 'none');
+}
 
 function reloadSite() {
 	calculateBodySize();

@@ -25,16 +25,31 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-						<form class="form-group">
-							<label for="firstChoice">Type: </label>
-							<select class="form-control" id="firstChoice">
-								<option value="corral">Corral</option>
-								<option value="garden">Garden</option>
-								<option value="coop">Coop</option>
-								<option value="pond">Pond</option>
-								<option value="silo">Silo</option>
-								<option value="incinerator">Incinerator</option>
-							</select>
+						<form class="form-group" id="editPlot">
+							<div>
+								<label for="firstChoice" id="firstChoiceLabel">Type: </label>
+								<select class="form-control" id="firstChoice">
+									<option value="unselected">Select type</option>
+									<option value="corral">Corral</option>
+									<option value="garden">Garden</option>
+									<option value="coop">Coop</option>
+									<option value="pond">Pond</option>
+									<option value="silo">Silo</option>
+									<option value="incinerator">Incinerator</option>
+								</select>
+							</div>
+							<div>
+								<label for="secondChoice" id="secondChoiceLabel"></label>
+								<select class="form-control" id="secondChoice">
+									<option value="unselected">Select type</option>
+								</select>
+							</div>
+							<div>
+								<label for="thirdChoice" id="thirdChoiceLabel"></label>
+								<select class="form-control" id="thirdChoice">
+									<option value="unselected">Select type</option>
+								</select>
+							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
@@ -43,7 +58,7 @@
 						</div>
 						<div style="flex: auto; text-align: right;">
 							<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-							<button type="submit" form="" value="Submit" class="btn btn-success" data-dismiss="modal">Save</button>
+							<button type="submit" form="editPlot" value="Submit" class="btn btn-success" data-dismiss="modal">Save</button>
 						</div>
 					</div>
 				</div>

@@ -35,6 +35,10 @@ body {
 	display: none;
 }
 
+label {
+	margin-top: .5rem;
+}
+
 #plot-W {
 	opacity: 0;
 	border: yellow solid 1px;
