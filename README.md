@@ -7,7 +7,7 @@ In future it will help you with giving suggestion what food to grow for every sl
 
 You can find it [here](https://baatochan.github.io/Slime-Rancher-Planner/).
 
-If you have an idea for new function or you are experiencing a bug - look at open issues and create new if there isn't open simmilar case.
+If you have an idea for new function or you are experiencing a bug - look at open issues and create new if there isn't open similar case.
 
 This code is open source and if you'd like to support it - follow these steps:
 * Create a fork of repo.
