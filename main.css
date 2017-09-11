@@ -1,42 +1,42 @@
 body {
-    width: 1680px;
-    height: 920px;
-    margin: 0;
-    background: url("map.png") no-repeat fixed center;
+	width: 1680px;
+	height: 920px;
+	margin: 0;
+	background: url("map.png") no-repeat fixed center;
 }
 
 .plot {
-    position: absolute;
-    margin: 0;
-    background: rgba(255, 255, 255, 0.3);
-    width: 25px;
-    height: 25px;
-    border: rgba(0, 0, 0, 0.5) solid 1px;
-    border-radius: 3px;
-    box-sizing: content-box;
+	position: absolute;
+	margin: 0;
+	background: rgba(255, 255, 255, 0.3);
+	width: 25px;
+	height: 25px;
+	border: rgba(0, 0, 0, 0.5) solid 1px;
+	border-radius: 3px;
+	box-sizing: content-box; /* overriding bootstrap default */
 }
 
 #plotTemplate {
-    display: none;
+	display: none;
 }
 
 #plot-W {
-    opacity: 0;
-    border: yellow solid 1px;
+	opacity: 0;
+	border: yellow solid 1px;
 }
 
 #plot-W:hover {
-    opacity: 1;
+	opacity: 1;
 }
 
 .plotNumber {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
 }
 
 a {
-    color: inherit;
+	color: inherit;
 }
