@@ -418,6 +418,12 @@ function openSetUpForm() {
 	} else {
 		$('#setupPlotNumber').text(id);
 	}
+	$.each(plots, function (key, value) {
+		// noinspection EqualityComparisonWithCoercionJS
+		if (value.id == id) {
+			$('#alignChoice').val(value.align);
+		}
+	});
 }
 
 /**
@@ -442,6 +448,7 @@ function openEditForm() {
 	$.each(plots, function (key, value) {
 		// noinspection EqualityComparisonWithCoercionJS
 		if (value.id == id) {
+			$('#alignChoice').val(value.align);
 			if (value.type !== null) {
 				firstChoice.val(value.type);
 				loadSecondAndThirdChoice();
@@ -612,6 +619,7 @@ function savePlot() {
 	$.each(plots, function (key, value) {
 		// noinspection EqualityComparisonWithCoercionJS
 		if (value.id == id) {
+			value.align = $('#alignChoice').val();
 			if (chosenFirstValue === 'unselected') {
 				value.occupied = false;
 				value.type = null;
