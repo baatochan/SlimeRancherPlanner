@@ -248,6 +248,29 @@ function calculateBodySize() {
 	var actualWidth = window.innerWidth;
 	var actualHeight = window.innerHeight;
 
+	var staticBackground = false;
+
+	if (actualWidth < 1100) {
+		actualWidth = 1100;
+		staticBackground = true;
+	}
+	if (actualHeight < 600) {
+		actualHeight = 600;
+		staticBackground = true;
+	}
+
+	if (staticBackground) {
+		var imageWidth = 2762;
+		var imageHeight = 1734;
+
+		var imageLeftOffset = (actualWidth-imageWidth)/2;
+		var imageTopOffset = (actualHeight-imageHeight)/2;
+
+		$(document.body).css('background-position', imageLeftOffset + 'px ' + imageTopOffset + 'px');
+	} else {
+		$(document.body).css('background-position', 'center center');
+	}
+
 	leftOffset = (actualWidth-desiredWidth)/2;
 	topOffset = (actualHeight-desiredHeight)/2;
 
