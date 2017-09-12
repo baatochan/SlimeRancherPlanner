@@ -143,6 +143,8 @@ $(document).ready(function () {
 	$('#importDataButton').click(importDataFromText);
 
 	$('#importDataFileInput').on('change', importDataFromFile);
+
+	$('#exportMenu').mouseenter(moveToTop);
 });
 
 //region saveMenu
@@ -247,6 +249,29 @@ function reloadSite() {
 function calculateBodySize() {
 	var actualWidth = window.innerWidth;
 	var actualHeight = window.innerHeight;
+
+	var staticBackground = false;
+
+	if (actualWidth < 1100) {
+		actualWidth = 1100;
+		staticBackground = true;
+	}
+	if (actualHeight < 600) {
+		actualHeight = 600;
+		staticBackground = true;
+	}
+
+	if (staticBackground) {
+		var imageWidth = 2762;
+		var imageHeight = 1734;
+
+		var imageLeftOffset = (actualWidth-imageWidth)/2;
+		var imageTopOffset = (actualHeight-imageHeight)/2;
+
+		$(document.body).css('background-position', imageLeftOffset + 'px ' + imageTopOffset + 'px');
+	} else {
+		$(document.body).css('background-position', 'center center');
+	}
 
 	leftOffset = (actualWidth-desiredWidth)/2;
 	topOffset = (actualHeight-desiredHeight)/2;
@@ -393,6 +418,12 @@ function openSetUpForm() {
 	} else {
 		$('#setupPlotNumber').text(id);
 	}
+	$.each(plots, function (key, value) {
+		// noinspection EqualityComparisonWithCoercionJS
+		if (value.id == id) {
+			$('#alignChoice').val(value.align);
+		}
+	});
 }
 
 /**
@@ -417,6 +448,7 @@ function openEditForm() {
 	$.each(plots, function (key, value) {
 		// noinspection EqualityComparisonWithCoercionJS
 		if (value.id == id) {
+			$('#alignChoice').val(value.align);
 			if (value.type !== null) {
 				firstChoice.val(value.type);
 				loadSecondAndThirdChoice();
@@ -587,6 +619,7 @@ function savePlot() {
 	$.each(plots, function (key, value) {
 		// noinspection EqualityComparisonWithCoercionJS
 		if (value.id == id) {
+			value.align = $('#alignChoice').val();
 			if (chosenFirstValue === 'unselected') {
 				value.occupied = false;
 				value.type = null;
