@@ -143,6 +143,8 @@ $(document).ready(function () {
 	$('#importDataButton').click(importDataFromText);
 
 	$('#importDataFileInput').on('change', importDataFromFile);
+
+	$('#exportMenu').mouseenter(moveToTop);
 });
 
 //region saveMenu

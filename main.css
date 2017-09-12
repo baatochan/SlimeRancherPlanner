@@ -25,6 +25,7 @@ label {
 	background-color: rgba(65, 82, 95, 0.7);
 	border: rgba(65, 82, 95, 0.7) solid 1px;
 	border-radius: 3px;
+	z-index: 1;
 }
 
 #exportMenu img {
