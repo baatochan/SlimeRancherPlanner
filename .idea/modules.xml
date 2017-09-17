@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Slime-Rancher-Planner.iml" filepath="$PROJECT_DIR$/.idea/Slime-Rancher-Planner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SlimeRancherPlanner.iml" filepath="$PROJECT_DIR$/.idea/SlimeRancherPlanner.iml" />
     </modules>
   </component>
 </project>
