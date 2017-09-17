@@ -124,7 +124,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- Modal with form for downloading data -->
+		<!-- Modal with form for importing data -->
 		<div id="importData" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -135,6 +135,7 @@
 					<div class="modal-body">
 						<form id="importDataForm">
 							<p id="fileError">File is not supported!</p>
+							<img id="fileLoadingAnimation" src="img/loader.gif" alt="Loading file...">
 							<input type="file" id="importDataFileInput">
 							<div style="margin: 0; display: none;" id="importDataTextInput">
 								<p><label for="importDataTextArea">Paste the content of exported file below.</label></p>

@@ -171,6 +171,7 @@ function openImportModal(e) {
 	var importDataFileInput = $('#importDataFileInput');
 	importDataFileInput.val('');
 	$('#fileError').css('display', 'none');
+	$('#fileLoadingAnimation').css('display', 'none');
 	var fileSupport = checkFileReaderSupport();
 	if(!fileSupport) {
 		importDataFileInput.css('display', 'none');
@@ -201,6 +202,7 @@ function importDataFromText() {
  * Import data by uploading exported file
  */
 function importDataFromFile() {
+	$('#fileLoadingAnimation').css('display', 'block');
 	var file = this.files[0];
 	var textType = /text.*/;
 
@@ -219,9 +221,9 @@ function importDataFromFile() {
 	}
 
 	setTimeout(function(){
+		$('#importData').modal('hide');
 		reloadSite();
-	}, 800);
-	$('#importData').modal('hide');
+	}, 1000);
 }
 
 /**
