@@ -421,8 +421,10 @@ function openSetUpForm(e) {
 	$('#editedPlotNumber').val(id);
 	if (id === 'W') {
 		$('#setupPlotNumber').text('- waterfall');
+		hideChoicesForWaterfall();
 	} else {
 		$('#setupPlotNumber').text(id);
+		showAllFirstChoices();
 	}
 	$.each(plots, function (key, value) {
 		// noinspection EqualityComparisonWithCoercionJS
@@ -444,8 +446,10 @@ function openEditForm(e) {
 	$('#editedPlotNumber').val(id);
 	if (id === 'W') {
 		$('#setupPlotNumber').text('- waterfall');
+		hideChoicesForWaterfall();
 	} else {
 		$('#setupPlotNumber').text(id);
+		showAllFirstChoices();
 	}
 
 	var firstChoice = $('#firstChoice');
@@ -477,6 +481,28 @@ function openEditForm(e) {
 			}
 		}
 	});
+}
+
+/**
+ * Function that hides all the choices except for unselected and pond from the first select menu.
+ */
+function hideChoicesForWaterfall() {
+	$('#firstChoiceCorral').css('display', 'none');
+	$('#firstChoiceGarden').css('display', 'none');
+	$('#firstChoiceCoop').css('display', 'none');
+	$('#firstChoiceSilo').css('display', 'none');
+	$('#firstChoiceIncinerator').css('display', 'none');
+}
+
+/**
+ * Function that restores all the choices in the first select menu.
+ */
+function showAllFirstChoices() {
+	$('#firstChoiceCorral').css('display', 'block');
+	$('#firstChoiceGarden').css('display', 'block');
+	$('#firstChoiceCoop').css('display', 'block');
+	$('#firstChoiceSilo').css('display', 'block');
+	$('#firstChoiceIncinerator').css('display', 'block');
 }
 
 /**
