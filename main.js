@@ -152,7 +152,8 @@ $(document).ready(function () {
 /**
  * Save plot array to file
  */
-function saveData() {
+function saveData(e) {
+	e.preventDefault();
 	$('#downloadData').modal('show');
 
 	var downloadLink = $('#downloadButton');
@@ -163,15 +164,16 @@ function saveData() {
 /**
  * Open the modal with textarea for stringified data to import
  */
-function openImportModal() {
+function openImportModal(e) {
+	e.preventDefault();
 	$('#importData').modal('show');
 	$('#importDataTextArea').val('');
-	// noinspection JSJQueryEfficiency
-	$('#importDataFileInput').val('');
+	var importDataFileInput = $('#importDataFileInput');
+	importDataFileInput.val('');
 	$('#fileError').css('display', 'none');
 	var fileSupport = checkFileReaderSupport();
 	if(!fileSupport) {
-		$('#importDataFileInput').css('display', 'none');
+		importDataFileInput.css('display', 'none');
 		$('#importDataTextInput').css('display', 'block');
 		$('#importDataButton').removeClass('disabled');
 	}
@@ -225,7 +227,8 @@ function importDataFromFile() {
 /**
  * Reset data to factory value
  */
-function resetData() {
+function resetData(e) {
+	e.preventDefault();
 	plots = $.extend(true, [], defaultValuesPlots); //plots = defaultValuesPlots doesn't make a copy, it points to the same array
 	reloadSite();
 }
@@ -407,7 +410,8 @@ function showMaximizedPlots() {
 /**
  * Open form for setting up small plot
  */
-function openSetUpForm() {
+function openSetUpForm(e) {
+	e.preventDefault();
 	$('#setupPlot').modal('show');
 	refreshForm();
 	var id = $(this).attr('id');
@@ -429,7 +433,8 @@ function openSetUpForm() {
 /**
  * Open form for editing set plot (big)
  */
-function openEditForm() {
+function openEditForm(e) {
+	e.preventDefault();
 	$('#setupPlot').modal('show');
 	refreshForm();
 	var id = $(this).attr('id');
