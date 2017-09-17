@@ -152,7 +152,8 @@ $(document).ready(function () {
 /**
  * Save plot array to file
  */
-function saveData() {
+function saveData(e) {
+	e.preventDefault();
 	$('#downloadData').modal('show');
 
 	var downloadLink = $('#downloadButton');
@@ -163,15 +164,17 @@ function saveData() {
 /**
  * Open the modal with textarea for stringified data to import
  */
-function openImportModal() {
+function openImportModal(e) {
+	e.preventDefault();
 	$('#importData').modal('show');
 	$('#importDataTextArea').val('');
-	// noinspection JSJQueryEfficiency
-	$('#importDataFileInput').val('');
+	var importDataFileInput = $('#importDataFileInput');
+	importDataFileInput.val('');
 	$('#fileError').css('display', 'none');
+	$('#fileLoadingAnimation').css('display', 'none');
 	var fileSupport = checkFileReaderSupport();
 	if(!fileSupport) {
-		$('#importDataFileInput').css('display', 'none');
+		importDataFileInput.css('display', 'none');
 		$('#importDataTextInput').css('display', 'block');
 		$('#importDataButton').removeClass('disabled');
 	}
@@ -199,6 +202,7 @@ function importDataFromText() {
  * Import data by uploading exported file
  */
 function importDataFromFile() {
+	$('#fileLoadingAnimation').css('display', 'block');
 	var file = this.files[0];
 	var textType = /text.*/;
 
@@ -217,15 +221,16 @@ function importDataFromFile() {
 	}
 
 	setTimeout(function(){
+		$('#importData').modal('hide');
 		reloadSite();
-	}, 800);
-	$('#importData').modal('hide');
+	}, 1000);
 }
 
 /**
  * Reset data to factory value
  */
-function resetData() {
+function resetData(e) {
+	e.preventDefault();
 	plots = $.extend(true, [], defaultValuesPlots); //plots = defaultValuesPlots doesn't make a copy, it points to the same array
 	reloadSite();
 }
@@ -407,7 +412,8 @@ function showMaximizedPlots() {
 /**
  * Open form for setting up small plot
  */
-function openSetUpForm() {
+function openSetUpForm(e) {
+	e.preventDefault();
 	$('#setupPlot').modal('show');
 	refreshForm();
 	var id = $(this).attr('id');
@@ -415,8 +421,10 @@ function openSetUpForm() {
 	$('#editedPlotNumber').val(id);
 	if (id === 'W') {
 		$('#setupPlotNumber').text('- waterfall');
+		hideChoicesForWaterfall();
 	} else {
 		$('#setupPlotNumber').text(id);
+		showAllFirstChoices();
 	}
 	$.each(plots, function (key, value) {
 		// noinspection EqualityComparisonWithCoercionJS
@@ -429,7 +437,8 @@ function openSetUpForm() {
 /**
  * Open form for editing set plot (big)
  */
-function openEditForm() {
+function openEditForm(e) {
+	e.preventDefault();
 	$('#setupPlot').modal('show');
 	refreshForm();
 	var id = $(this).attr('id');
@@ -437,8 +446,10 @@ function openEditForm() {
 	$('#editedPlotNumber').val(id);
 	if (id === 'W') {
 		$('#setupPlotNumber').text('- waterfall');
+		hideChoicesForWaterfall();
 	} else {
 		$('#setupPlotNumber').text(id);
+		showAllFirstChoices();
 	}
 
 	var firstChoice = $('#firstChoice');
@@ -470,6 +481,28 @@ function openEditForm() {
 			}
 		}
 	});
+}
+
+/**
+ * Function that hides all the choices except for unselected and pond from the first select menu.
+ */
+function hideChoicesForWaterfall() {
+	$('#firstChoiceCorral').css('display', 'none');
+	$('#firstChoiceGarden').css('display', 'none');
+	$('#firstChoiceCoop').css('display', 'none');
+	$('#firstChoiceSilo').css('display', 'none');
+	$('#firstChoiceIncinerator').css('display', 'none');
+}
+
+/**
+ * Function that restores all the choices in the first select menu.
+ */
+function showAllFirstChoices() {
+	$('#firstChoiceCorral').css('display', 'block');
+	$('#firstChoiceGarden').css('display', 'block');
+	$('#firstChoiceCoop').css('display', 'block');
+	$('#firstChoiceSilo').css('display', 'block');
+	$('#firstChoiceIncinerator').css('display', 'block');
 }
 
 /**
