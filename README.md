@@ -13,3 +13,7 @@ This code is open source and if you'd like to support it - follow these steps:
 * Create a fork of repo.
 * Commit all the change to new branch on top of the develop branch
 * Open pull request to develop branch
+
+If you enjoy my work, you can give me a cup of coffee :) 
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/baatochan/1usd)
