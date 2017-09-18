@@ -145,6 +145,17 @@ $(document).ready(function () {
 	$('#importDataFileInput').on('change', importDataFromFile);
 
 	$('#exportMenu').mouseenter(moveToTop);
+
+	var donateBox = $('#donateBox');
+	var donateText = $('#donateText');
+
+	donateBox.mouseenter(function () {
+		donateText.show();
+	});
+
+	donateBox.mouseleave(function () {
+		donateText.hide();
+	});
 });
 
 //region saveMenu

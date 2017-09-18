@@ -15,6 +15,32 @@ label {
 	margin-top: .5rem;
 }
 
+/* Donate button */
+
+#donateBox {
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 5px;
+	background-color: rgba(65, 82, 95, 0.7);
+	border: rgba(65, 82, 95, 0.7) solid 1px;
+	border-radius: 3px;
+	z-index: 1;
+	line-height: 1.0;
+}
+
+#donateText {
+	font-size: 14px;
+	margin: 5px 0 2px 0;
+	color: white;
+	display: none;
+	text-shadow: 0 0 5px rgb(34, 140, 126);
+}
+
+#donateText p {
+	margin: 0;
+}
+
 /* Export menu */
 
 #exportMenu {
