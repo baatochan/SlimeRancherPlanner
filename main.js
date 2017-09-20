@@ -292,7 +292,7 @@ function calculateBodySize() {
  * Create (or update) HTML for small plots
  */
 function showPlots() {
-	var plotBorder = $('.plot').css('border-width');
+	var plotBorder = $('.plot').css('border-top-width');
 	plotBorder = plotBorder.slice(0, -2);
 	plotBorder = parseInt(plotBorder);
 	var plotTemplate = $('#plotTemplate');
@@ -320,7 +320,7 @@ function showPlots() {
  * Create (or update) HTML for big plots
  */
 function showMaximizedPlots() {
-	var plotBorder = $('.plotMaximized').css('border-width');
+	var plotBorder = $('.plotMaximized').css('border-top-width');
 	plotBorder = plotBorder.slice(0, -2);
 	plotBorder = parseInt(plotBorder);
 	var plotTemplate = $('#plotMaximizedTemplate');
