@@ -9,6 +9,7 @@
 		<meta name="author" content="Bartosz Rodziewicz">
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 		<link href="main.css" rel="stylesheet">
 
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -22,14 +23,15 @@
 			<a href="https://www.paypal.me/baatochan/1usd"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" id="donateButton"></a>
 			<div id="donateText">
 				<p>If you enjoy my work,</p>
-				<p>you can give me a cup of coffee :)</p>
+				<p>you can give me</p>
+				<p>a cup of coffee <i class="em em-blush" style="vertical-align: bottom; width: 1.25em; height: 1.25em;"></i></p>
 			</div>
 		</div>
 		<!-- Export/Import menu -->
 		<div id="exportMenu">
 			<a href="#" id="exportLink"><img src="img/save.png" alt="Export data"></a>
 			<a href="#" id="importLink"><img src="img/load.png" alt="Import data"></a>
-			<a href="#" id="resetLink"><img src="img/reset.png" alt="Reset data"></a>
+			<a href="#" id="resetLink" data-toggle="modal" data-target="#confirmReset"><img src="img/reset.png" alt="Reset data"></a>
 		</div>
 		<!-- Place for plot divs (small with number - empty) -->
 		<div id="plots">
@@ -154,6 +156,24 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 						<button type="button" id="importDataButton" form="importDataForm" class="btn btn-success disabled">Load</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal for confirmation of resetting farm -->
+		<div id="confirmReset" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Reset data</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Do you want to reset the plan of the Ranch?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" id="resetButton" class="btn btn-danger">Reset</button>
 					</div>
 				</div>
 			</div>
