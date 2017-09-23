@@ -134,7 +134,7 @@ $(document).ready(function () {
 
 	$('#savePlot').click(savePlot);
 
-	$('#resetLink').click(resetData);
+	$('#resetButton').click(resetData);
 
 	$('#exportLink').click(saveData);
 
@@ -244,6 +244,7 @@ function resetData(e) {
 	e.preventDefault();
 	plots = $.extend(true, [], defaultValuesPlots); //plots = defaultValuesPlots doesn't make a copy, it points to the same array
 	reloadSite();
+	$('#confirmReset').modal('hide');
 }
 
 //endregion
