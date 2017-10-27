@@ -83,7 +83,8 @@ var slimeTypes = [
 	'Hunter Slime',
 	'Mosaic Slime',
 	'Dervish Slime',
-	'Tangle Slime'
+	'Tangle Slime',
+	'Saber Slime'
 ];
 
 var waterSlimeTypes = [
