@@ -1,17 +1,13 @@
-<!-- markdownlint-disable-->
 Before reporting a new issue please double check that:
 
-- you followed the instructions at https://giobonvi.github.io/GoogleContactsEventsNotifier correctly in every step;
-- there is no open issue discussing your problem (check here: https://github.com/GioBonvi/GoogleContactsEventsNotifier/issues);
-- there is no closed issue which has solved or declared unsolvable your problem (check here: https://github.com/GioBonvi/GoogleContactsEventsNotifier/issues?q=is%3Aissue+is%3Aclosed);
+- there is no open issue discussing your problem (check here: https://github.com/baatochan/SlimeRancherPlanner/issues);
+- there is no closed issue which has solved or declared unsolvable your problem (check here: https://github.com/baatochan/SlimeRancherPlanner/issues?q=is%3Aissue+is%3Aclosed);
 
 If this issue is not about a bug or a problem you can delete all of this and write whatever you want.
 
 ****************************************************************************
  DELETE THIS AND THE TEXT ABOVE AND INSERT THE CONTENT BELOW
 ****************************************************************************
-<!-- markdownlint-enable-->
-<!-- markdownlint-disable MD002 -->
 
 ### Steps to reproduce
 
@@ -23,7 +19,7 @@ What action or series of actions is the cause of the issue?
 
 ### Expected behavior
 
- What should happen?
+What should happen?
 
 ### Current behavior
 
@@ -31,9 +27,9 @@ What happens instead?
 
 ### Context
 
-- Version of the script: x.x.x (look for a line in the code which reads `var
-  version = 'x.x.x';`);
-- Any other details which might be related to the context;
+- Browser (and version) you are using: 
+- Operating system you are using:
+- Any other details which might be related to the context
 
 ### Extended description
 
