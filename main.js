@@ -96,16 +96,27 @@ var fireSlimeTypes = [
 ];
 
 var foodTypes = [
-	'Carrot',
-	'Heart Beet',
-	'Oca Oca',
-	'Odd Onion',
-	'Silver Parsnip',
-	'Pogofruit',
-	'Cuberry',
-	'Mint Mango',
-	'Phase Lemon',
-	'Prickle Pear'
+	{
+		'name': 'Carrot', 'amount': 20
+	}, {
+		'name': 'Heart Beet', 'amount': 15
+	}, {
+		'name': 'Oca Oca', 'amount': 15
+	}, {
+		'name': 'Odd Onion', 'amount': '20?'
+	}, {
+		'name': 'Silver Parsnip', 'amount': 15
+	}, {
+		'name': 'Pogofruit', 'amount': 20
+	}, {
+		'name': 'Cuberry', 'amount': 15
+	}, {
+		'name': 'Mint Mango', 'amount': 15
+	}, {
+		'name': 'Phase Lemon', 'amount': 15
+	}, {
+		'name': 'Prickle Pear', 'amount': 15
+	}
 ];
 
 var meatTypes = [
