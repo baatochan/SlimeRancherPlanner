@@ -69,6 +69,10 @@ label {
 	text-align: center;
 }
 
+#issueLink {
+	margin: 0 5px 0 0;
+}
+
 #downloadData .modal-body {
 	text-align: center;
 }

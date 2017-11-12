@@ -159,10 +159,16 @@ $(document).ready(function () {
 	});
 
 	var exportMenu = $('#exportMenu');
+	var issueLink = $('#issueLink');
 	var exportLink = $('#exportLink');
 	var importLink = $('#importLink');
 	var resetLink = $('#resetLink');
 	var menuText = $('#menuText');
+
+	issueLink.mouseenter(function () {
+		menuText.text('Report issue');
+		menuText.show();
+	});
 
 	exportLink.mouseenter(function () {
 		menuText.text('Export plan');
