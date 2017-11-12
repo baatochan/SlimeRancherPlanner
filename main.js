@@ -660,6 +660,7 @@ function updateOptions(type, selectHTML) {
 
 	if (array !== null) {
 		$.each(array, function (key, type) {
+			if (typeof type === 'object') type = type.name;
 			var value = type.replace(/\s/g, "-").toLowerCase();
 			selectHTML.append($('<option>', {
 				value: value,
