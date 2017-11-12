@@ -59,6 +59,16 @@ label {
 	width: 40px;
 }
 
+#menuText {
+	font-size: 14px;
+	margin: 5px 0 2px 0;
+	color: white;
+	display: none;
+	text-shadow: 0 0 5px rgb(34, 140, 126);
+	line-height: 1.25;
+	text-align: center;
+}
+
 #downloadData .modal-body {
 	text-align: center;
 }

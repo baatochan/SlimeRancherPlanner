@@ -157,6 +157,31 @@ $(document).ready(function () {
 	donateBox.mouseleave(function () {
 		donateText.hide();
 	});
+
+	var exportMenu = $('#exportMenu');
+	var exportLink = $('#exportLink');
+	var importLink = $('#importLink');
+	var resetLink = $('#resetLink');
+	var menuText = $('#menuText');
+
+	exportLink.mouseenter(function () {
+		menuText.text('Export plan');
+		menuText.show();
+	});
+
+	importLink.mouseenter(function () {
+		menuText.text('Import plan');
+		menuText.show();
+	});
+
+	resetLink.mouseenter(function () {
+		menuText.text('Reset plan');
+		menuText.show();
+	});
+
+	exportMenu.mouseleave(function () {
+		menuText.hide();
+	});
 });
 
 //region saveMenu
