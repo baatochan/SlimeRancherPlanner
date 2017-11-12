@@ -91,7 +91,7 @@ var waterSlimeTypes = [
 	'Puddle Slime'
 ];
 
-var fireSlimeTypes = ['' +
+var fireSlimeTypes = [
 	'Fire Slime'
 ];
 
