@@ -714,7 +714,11 @@ function savePlot() {
 					value.secondItem = null;
 				} else {
 					value.firstItem = chosenSecondValue;
-					if (chosenThirdValue !== 'unselected' && chosenFirstValue === 'corral') value.secondItem = chosenThirdValue;
+					if (chosenThirdValue !== 'unselected' && chosenFirstValue === 'corral' && chosenThirdValue !== chosenSecondValue) {
+						value.secondItem = chosenThirdValue;
+					} else {
+						value.secondItem = null;
+					}
 				}
 			}
 		}
