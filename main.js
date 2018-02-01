@@ -457,6 +457,14 @@ function showMaximizedPlots() {
 	var allMaximizedPlots = $('[id^="plotMaximizedA-"]');
 	allMaximizedPlots.click(openEditForm);
 	allMaximizedPlots.mouseenter(moveToTop);
+
+	var numberOfItems = $('.numberOfItemsInPlot');
+	numberOfItems.mouseenter(function () {
+		$(this).css('opacity', 1);
+	});
+	numberOfItems.mouseleave(function () {
+		$(this).css('opacity', 0.3);
+	});
 }
 
 //endregion
