@@ -432,11 +432,8 @@ function showMaximizedPlots() {
 				plot.find('.corralContent').css('display', 'flex');
 			} else if (value.firstItem !== null) {
 				plot.find('.corralContent').css('display', 'none');
-				plot.find('.plotContent').empty();
-				plot.find('.plotContent').append($('<img>', {
-					src: 'img/plotItems/' + value.firstItem + '.png',
-					alt: value.firstItem
-				}));
+				plot.find('.plotContentImg').attr('src', 'img/plotItems/' + value.firstItem + '.png');
+				plot.find('.plotContentImg').attr('alt', value.firstItem);
 				plot.find('.plotContent').css('display', 'flex');
 			} else {
 				plot.find('.corralContent').css('display', 'none');
