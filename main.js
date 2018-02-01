@@ -103,7 +103,7 @@ var foodTypes = [
 	}, {
 		'name': 'Oca Oca', 'amount': 15
 	}, {
-		'name': 'Odd Onion', 'amount': '20?'
+		'name': 'Odd Onion', 'amount': 20
 	}, {
 		'name': 'Silver Parsnip', 'amount': 15
 	}, {
@@ -141,6 +141,8 @@ $(document).ready(function () {
 	$('[id^="plotA-"]').click(openSetUpForm);
 
 	$('#firstChoice').change(loadSecondAndThirdChoice);
+
+	$('#secondChoice').change(loadNumberOfItemsForGarden);
 
 	$('#clearPlot').click(clearPlot);
 
@@ -672,6 +674,28 @@ function updateOptions(type, selectHTML) {
 				text : type
 			}));
 		})
+	}
+}
+
+/**
+ * Load correct number of items for stuff when switching to garden entries
+ */
+function loadNumberOfItemsForGarden() {
+	var chosenFirstValue = $('#firstChoice').val();
+
+	if (chosenFirstValue === 'garden') {
+		var chosenSecondValue = $('#secondChoice').val();
+		var numberOfItems = 0;
+
+		if (chosenSecondValue !== 'unselected') {
+			$.each(foodTypes, function (key, value) {
+				var name = value.name.replace(/\s/g, "-").toLowerCase();
+				if (name === chosenSecondValue) {
+					numberOfItems = value.amount;
+				}
+			})
+		}
+		$('#numberOfItems').val(numberOfItems);
 	}
 }
 
