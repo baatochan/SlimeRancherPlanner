@@ -15,6 +15,10 @@ label {
 	margin-top: .5rem;
 }
 
+.hideForReal {
+	display: none !important;
+}
+
 /* Donate button */
 
 #donateBox {
@@ -69,7 +73,7 @@ label {
 	text-align: center;
 }
 
-#issueLink {
+#issueLink, #numberOfItemsLink {
 	margin: 0 5px 0 0;
 }
 
@@ -102,7 +106,7 @@ label {
 
 /* Setup plot */
 
-#description {
+#description, #numberOfItems {
 	width: 100%;
 	padding: 5px 15px;
 }
@@ -233,4 +237,17 @@ label {
 
 .plotContent img {
 	width: 50px;
+}
+
+.numberOfItemsInPlot {
+	position: absolute;
+	font-weight: bold;
+	display: none;
+	font-size: 32px;
+	font-style: italic;
+	opacity: 0.3;
+	padding: 0 5px 2px 2px;
+	border-radius: 5px;
+	color: white;
+	text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
 }

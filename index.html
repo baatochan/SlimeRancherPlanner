@@ -29,6 +29,7 @@
 		</div>
 		<!-- Export/Import menu -->
 		<div id="exportMenu">
+			<a href="#" id="numberOfItemsLink"><img src="img/hideNOI.png" alt="Show/hide number of items in plots"></a>
 			<a href="https://github.com/baatochan/SlimeRancherPlanner/issues/new" id="issueLink"><img src="img/issue.png" alt="Report issue"></a>
 			<a href="#" id="exportLink"><img src="img/save.png" alt="Export data"></a>
 			<a href="#" id="importLink"><img src="img/load.png" alt="Import data"></a>
@@ -53,9 +54,13 @@
 						</div>
 						<div class="corralContentSecondItem"></div>
 						<div style="clear: both; float: none;"></div>
+						<p class="numberOfItemsInPlot"></p>
 					</div>
 					<!-- Place for 1 item inside plot-->
-					<div class="plotContent"></div>
+					<div class="plotContent">
+						<img src="#" class="plotContentImg">
+						<p class="numberOfItemsInPlot"></p>
+					</div>
 				</div>
 			</a>
 		</div>
@@ -107,6 +112,10 @@
 							<div>
 								<div><label for="description" id="descriptionLabel" title="Shown when mouse over the plot">Custom description of the plot</label></div>
 								<div><input id="description" type="text" placeholder="Shown when mouse over the plot"></div>
+							</div>
+							<div>
+								<div><label for="numberOfItems" id="numberOfItemsLabel">Number of stuff inside</label></div>
+								<div><input id="numberOfItems" type="number"></div>
 							</div>
 						</form>
 					</div>
