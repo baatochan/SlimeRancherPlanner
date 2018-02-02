@@ -8,6 +8,8 @@ var desiredHeight = 920;
 var leftOffset = 0;
 var topOffset = 0;
 
+var isNumberOfItemsHidden = false;
+
 //region arrays
 
 var defaultValuesPlots = [
@@ -150,6 +152,8 @@ $(document).ready(function () {
 
 	$('#resetButton').click(resetData);
 
+	$('#numberOfItemsLink').click(showHideNumberOfItems);
+
 	$('#exportLink').click(saveData);
 
 	$('#importLink').click(openImportModal);
@@ -172,11 +176,22 @@ $(document).ready(function () {
 	});
 
 	var exportMenu = $('#exportMenu');
+	var numberOfItemsLink = $('#numberOfItemsLink');
 	var issueLink = $('#issueLink');
 	var exportLink = $('#exportLink');
 	var importLink = $('#importLink');
 	var resetLink = $('#resetLink');
 	var menuText = $('#menuText');
+
+	numberOfItemsLink.mouseenter(function () {
+		if (isNumberOfItemsHidden) {
+			menuText.text('Show number of items in plots');
+
+		} else {
+			menuText.text('Hide number of items in plots');
+		}
+		menuText.show();
+	});
 
 	issueLink.mouseenter(function () {
 		menuText.text('Report issue');
@@ -290,6 +305,24 @@ function resetData(e) {
 	plots = $.extend(true, [], defaultValuesPlots); //plots = defaultValuesPlots doesn't make a copy, it points to the same array
 	reloadSite();
 	$('#confirmReset').modal('hide');
+}
+
+/**
+ * Show or hide number of item text on plots
+ */
+function showHideNumberOfItems(e) {
+	e.preventDefault();
+	if (isNumberOfItemsHidden) {
+		$('.hideForReal').removeClass('hideForReal');
+		$('#numberOfItemsLink').find('img').attr('src', 'img/hideNOI.png');
+		$('#menuText').text('Hide number of items in plots');
+		isNumberOfItemsHidden = false;
+	} else {
+		$('.numberOfItemsInPlot').addClass('hideForReal');
+		$('#numberOfItemsLink').find('img').attr('src', 'img/showNOI.png');
+		$('#menuText').text('Show number of items in plots');
+		isNumberOfItemsHidden = true;
+	}
 }
 
 //endregion
