@@ -417,7 +417,7 @@ function showPlots() {
 			plot.css('display', '');
 			plot.css('z-index', 0);
 			plot.find('.plot').attr('id', 'plot-' + value.id);
-			if (value.id === 'MW')
+			if (typeof value.id === 'string' && value.id.slice(-1) === 'W')
 				plot.find('.plotNumber').text('W');
 			else
 				plot.find('.plotNumber').text(value.id);
@@ -457,7 +457,6 @@ function showMaximizedPlots() {
 			plot.find('.regionName').text(value.title);
 			plot.find('.regionName').css('display', 'block');
 			plot.css('width', value.width).css('height', value.height);
-			console.log(value.bgSize);
 			plot.css('background-color', 'rgba(' + value.background + ', 0.7)').css('background-image', 'url(img/region-backgrounds/'+ simplifiedName +'.png)').css('background-size', value.bgSize + 'px');
 		}
 	});
@@ -572,7 +571,7 @@ function openSetUpForm(e) {
 	var id = $(this).attr('id');
 	id = id.slice(6);
 	$('#editedPlotNumber').val(id);
-	if (id === 'W') {
+	if (id.slice(-1) === 'W') {
 		$('#setupPlotNumber').text('- waterfall');
 		hideChoicesForWaterfall();
 	} else {
