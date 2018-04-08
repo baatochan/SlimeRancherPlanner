@@ -68,27 +68,39 @@ var defaultValuesPlots = [
 	}, {
 		'id': 'W', 'leftPosition': 374, 'topPosition': 570, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O1', 'leftPosition': 512, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O1', 'leftPosition': 507, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O2', 'leftPosition': 550, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O2', 'leftPosition': 545, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O3', 'leftPosition': 550, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O3', 'leftPosition': 545, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O4', 'leftPosition': 674, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O4', 'leftPosition': 669, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O5', 'leftPosition': 636, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O5', 'leftPosition': 631, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O6', 'leftPosition': 636, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O6', 'leftPosition': 631, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M1', 'leftPosition': 775, 'topPosition': 549, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M2', 'leftPosition': 775, 'topPosition': 635, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M3', 'leftPosition': 861, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M4', 'leftPosition': 861, 'topPosition': 673, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M5', 'leftPosition': 947, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'MW', 'leftPosition': 904, 'topPosition': 592, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}
 ];
 
 var plots;
 
 var regions = [
-	{//660 410 -188 44
-		'leftPosition': 472, 'topPosition': 454, 'align': 'bottom-right', 'title': "Ogden's Retreat", 'show': true, 'width': 267, 'height': 301, 'background': '33, 86, 60', 'bgSize': 250
+	{
+		'leftPosition': 467, 'topPosition': 454, 'align': 'bottom-right', 'title': "Ogden's Retreat", 'show': true, 'width': 267, 'height': 301, 'background': '33, 86, 60', 'bgSize': 250
 	}, {
-		'leftPosition': 0, 'topPosition': 0, 'align': 'bottom-right', 'title': "Mochi's Manor", 'show': false
+		'leftPosition': 740, 'topPosition': 454, 'align': 'bottom-right', 'title': "Mochi's Manor", 'show': true, 'width': 267, 'height': 279, 'background': '116, 129, 145', 'bgSize': 220
 	}
 ];
 
@@ -405,7 +417,10 @@ function showPlots() {
 			plot.css('display', '');
 			plot.css('z-index', 0);
 			plot.find('.plot').attr('id', 'plot-' + value.id);
-			plot.find('.plotNumber').text(value.id);
+			if (value.id === 'MW')
+				plot.find('.plotNumber').text('W');
+			else
+				plot.find('.plotNumber').text(value.id);
 			plotTemplate.after(plot);
 		}
 		var leftPosition = value.leftPosition + leftOffset - plotBorder;
