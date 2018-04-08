@@ -169,6 +169,7 @@ $(document).ready(function () {
 	calculateBodySize();
 	showPlots();
 	showMaximizedPlots();
+	createSlimeCountTable();
 
 	$(window).resize(reloadSite);
 
@@ -248,6 +249,20 @@ $(document).ready(function () {
 	exportMenu.mouseleave(function () {
 		menuText.hide();
 	});
+
+	$('#openSlimeCount').click(function (e) {
+		e.preventDefault();
+		$('#openSlimeCount').hide();
+		$('#slimeCount').show('slow');
+	});
+
+	$('#hideSlimeCount').click(function (e) {
+		e.preventDefault();
+		$('#openSlimeCount').show();
+		$('#slimeCount').hide('slow');
+	});
+
+	$('#refreshSlimeCount').click(updateSlimeCountTable);
 });
 
 //region saveMenu
@@ -542,6 +557,8 @@ function showMaximizedPlots() {
 			plot.attr('title', '');
 			$('#plotA-' + value.id).css('display', 'block');
 		}
+
+		updateSlimeCountTable();
 	});
 
 	var allMaximizedPlots = $('[id^="plotMaximizedA-"]');
@@ -554,6 +571,44 @@ function showMaximizedPlots() {
 	});
 	numberOfItems.mouseleave(function () {
 		$(this).css('opacity', 0.3);
+	});
+}
+
+/**
+ * Fill rows in the slime count table with slimes
+ */
+function createSlimeCountTable() {
+	var st = $.extend(true, [], slimeTypes);
+	st.reverse();
+
+	$.each(st, function (key, value) {
+		var rowTemplate = $('#slimeCountTableRowTemplate');
+		var row = rowTemplate.clone();
+		rowTemplate.after(row);
+		var slimeName = value.replace(/\s/g, "-").toLowerCase();
+		row.attr('id', 'scRow-' + slimeName);
+		row.find('.slimeCountImage').attr('src', 'img/plotItems/' + slimeName + '.png');
+		row.find('.SlimeCountNumber').text(0);
+	});
+}
+
+/**
+ * Count the number of corrals with the slime for every slime in slime count table
+ */
+function updateSlimeCountTable() {
+	$('.slimeCountTableRow').each(function (index) {
+		if ($(this).attr('id') === 'slimeCountTableRowTemplate') return true;
+		var slimeName = $(this).attr('id');
+		slimeName = slimeName.slice(6);
+
+		var numberOfCorrals = 0;
+		$.each(plots, function (key, value) {
+			if (value.occupied === true && value.type === 'corral') {
+				if (value.firstItem === slimeName || value.secondItem === slimeName) numberOfCorrals++;
+			}
+		});
+
+		$(this).find('.SlimeCountNumber').text(numberOfCorrals);
 	});
 }
 

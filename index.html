@@ -67,6 +67,22 @@
 				<p class="regionName"></p>
 			</div>
 		</div>
+		<!-- Small button to show slime count table -->
+		<div id="openSlimeCount"><a href="#"><img src="img/double-arrow-left.png" style="width: 20px; vertical-align: unset; margin-top:2px"></a></div>
+		<!-- Slime count table -->
+		<div id="slimeCount">
+			<a href="#" id="hideSlimeCount"><img src="img/close.png" style="width: 16px;"></a>
+			<a href="#" id="refreshSlimeCount"><img src="img/refresh.png" style="width: 20px;"></a>
+			<div style="clear: both; margin-bottom: 8px"></div>
+			<p id="slimeCountTitle">Slime Count</p>
+			<table>
+				<tr><th>Slime</th><th>Number of corrals</th></tr>
+				<tr id="slimeCountTableRowTemplate" class="slimeCountTableRow">
+					<td><img class="slimeCountImage" src=""></td>
+					<td class="SlimeCountNumber"></td>
+				</tr>
+			</table>
+		</div>
 		<!-- Modal with form for setting up/editing plot -->
 		<div id="setupPlot" class="modal fade" role="dialog">
 			<div class="modal-dialog">
