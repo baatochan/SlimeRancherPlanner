@@ -74,11 +74,11 @@ var defaultValuesPlots = [
 	}, {
 		'id': 'O3', 'leftPosition': 550, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O4', 'leftPosition': 636, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O4', 'leftPosition': 674, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O5', 'leftPosition': 636, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O5', 'leftPosition': 636, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O6', 'leftPosition': 674, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O6', 'leftPosition': 636, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}
 ];
 
