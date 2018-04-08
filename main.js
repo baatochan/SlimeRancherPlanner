@@ -84,6 +84,14 @@ var defaultValuesPlots = [
 
 var plots;
 
+var regions = [
+	{//660 410 -188 44
+		'leftPosition': 472, 'topPosition': 454, 'align': 'bottom-right', 'title': "Ogden's Retreat", 'show': true, 'width': 267, 'height': 301, 'background': '33, 86, 60', 'bgSize': 250
+	}, {
+		'leftPosition': 0, 'topPosition': 0, 'align': 'bottom-right', 'title': "Mochi's Manor", 'show': false
+	}
+];
+
 var slimeTypes = [
 	'Pink Slime',
 	'Rock Slime',
