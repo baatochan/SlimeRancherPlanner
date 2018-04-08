@@ -423,6 +423,29 @@ function showMaximizedPlots() {
 	plotBorder = plotBorder.slice(0, -2);
 	plotBorder = parseInt(plotBorder);
 	var plotTemplate = $('#plotMaximizedTemplate');
+	var regionTemplate = $('#regionTemplate');
+
+	$.each(regions, function (key, value) {
+		var simplifiedName = value.title.replace(/\s/g, "-").replace(/'/g, "").toLowerCase();
+		var plot = $('#' + simplifiedName + '-region');
+		if (value.show) {
+			if (plot.length === 0) {
+				plot = regionTemplate.clone();
+				plot.attr('id', simplifiedName + '-region');
+				plot.css('z-index', -1);
+				regionTemplate.after(plot);
+			}
+			var leftPosition = value.leftPosition + leftOffset - plotBorder;
+			var topPosition = value.topPosition + topOffset - plotBorder;
+			plot.css('left', leftPosition + 'px');
+			plot.css('top', topPosition + 'px');
+			plot.find('.regionName').text(value.title);
+			plot.find('.regionName').css('display', 'block');
+			plot.css('width', value.width).css('height', value.height);
+			console.log(value.bgSize);
+			plot.css('background-color', 'rgba(' + value.background + ', 0.7)').css('background-image', 'url(img/region-backgrounds/'+ simplifiedName +'.png)').css('background-size', value.bgSize + 'px');
+		}
+	});
 
 	$.each(plots, function (key, value) {
 		var plot = $('#plotMaximizedA-' + value.id);
