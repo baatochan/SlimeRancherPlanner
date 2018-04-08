@@ -68,21 +68,41 @@ var defaultValuesPlots = [
 	}, {
 		'id': 'W', 'leftPosition': 374, 'topPosition': 570, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O1', 'leftPosition': 590, 'topPosition': 550, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O1', 'leftPosition': 507, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O2', 'leftPosition': 675, 'topPosition': 600, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O2', 'leftPosition': 545, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O3', 'leftPosition': 675, 'topPosition': 630, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O3', 'leftPosition': 545, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O4', 'leftPosition': 705, 'topPosition': 600, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O4', 'leftPosition': 669, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O5', 'leftPosition': 705, 'topPosition': 630, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O5', 'leftPosition': 631, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O6', 'leftPosition': 790, 'topPosition': 550, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O6', 'leftPosition': 631, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M1', 'leftPosition': 775, 'topPosition': 549, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M2', 'leftPosition': 775, 'topPosition': 635, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M3', 'leftPosition': 861, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M4', 'leftPosition': 861, 'topPosition': 673, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'M5', 'leftPosition': 947, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'MW', 'leftPosition': 904, 'topPosition': 592, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}
 ];
 
 var plots;
+
+var regions = [
+	{
+		'leftPosition': 467, 'topPosition': 454, 'align': 'bottom-right', 'title': "Ogden's Retreat", 'show': true, 'width': 267, 'height': 301, 'background': '33, 86, 60', 'bgSize': 250
+	}, {
+		'leftPosition': 740, 'topPosition': 454, 'align': 'bottom-right', 'title': "Mochi's Manor", 'show': true, 'width': 267, 'height': 279, 'background': '116, 129, 145', 'bgSize': 220
+	}
+];
 
 var slimeTypes = [
 	'Pink Slime',
@@ -397,7 +417,10 @@ function showPlots() {
 			plot.css('display', '');
 			plot.css('z-index', 0);
 			plot.find('.plot').attr('id', 'plot-' + value.id);
-			plot.find('.plotNumber').text(value.id);
+			if (value.id === 'MW')
+				plot.find('.plotNumber').text('W');
+			else
+				plot.find('.plotNumber').text(value.id);
 			plotTemplate.after(plot);
 		}
 		var leftPosition = value.leftPosition + leftOffset - plotBorder;
@@ -415,6 +438,29 @@ function showMaximizedPlots() {
 	plotBorder = plotBorder.slice(0, -2);
 	plotBorder = parseInt(plotBorder);
 	var plotTemplate = $('#plotMaximizedTemplate');
+	var regionTemplate = $('#regionTemplate');
+
+	$.each(regions, function (key, value) {
+		var simplifiedName = value.title.replace(/\s/g, "-").replace(/'/g, "").toLowerCase();
+		var plot = $('#' + simplifiedName + '-region');
+		if (value.show) {
+			if (plot.length === 0) {
+				plot = regionTemplate.clone();
+				plot.attr('id', simplifiedName + '-region');
+				plot.css('z-index', -1);
+				regionTemplate.after(plot);
+			}
+			var leftPosition = value.leftPosition + leftOffset - plotBorder;
+			var topPosition = value.topPosition + topOffset - plotBorder;
+			plot.css('left', leftPosition + 'px');
+			plot.css('top', topPosition + 'px');
+			plot.find('.regionName').text(value.title);
+			plot.find('.regionName').css('display', 'block');
+			plot.css('width', value.width).css('height', value.height);
+			console.log(value.bgSize);
+			plot.css('background-color', 'rgba(' + value.background + ', 0.7)').css('background-image', 'url(img/region-backgrounds/'+ simplifiedName +'.png)').css('background-size', value.bgSize + 'px');
+		}
+	});
 
 	$.each(plots, function (key, value) {
 		var plot = $('#plotMaximizedA-' + value.id);
