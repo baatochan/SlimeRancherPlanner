@@ -175,6 +175,11 @@ label {
 }
 
 /*noinspection CssUnusedSymbol*/
+.freerange {
+	background-color: rgba(240, 230, 140, 0.7);
+}
+
+/*noinspection CssUnusedSymbol*/
 .coop {
 	background-color: rgba(128, 128, 128, 0.7);
 }
@@ -192,6 +197,11 @@ label {
 /*noinspection CssUnusedSymbol*/
 .incinerator {
 	background-color: rgba(220, 20, 60, 0.7);
+}
+
+/*noinspection CssUnusedSymbol*/
+.plotFreerange {
+	background-color: rgba(240, 230, 140, 0.7);
 }
 
 .plotType {
@@ -290,7 +300,8 @@ label {
 	right: 0;
 	top: 150px;
 	border: rgba(0, 0, 0, 1) solid 1px;
-	border-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
 	padding: 3px 5px;
 	line-height: 1;
 	background-color: rgba(65, 82, 95, 0.7);
@@ -301,7 +312,8 @@ label {
 	right: 0;
 	top: 150px;
 	border: rgba(0, 0, 0, 1) solid 1px;
-	border-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
 	line-height: 1;
 	background-color: rgb(65, 82, 95);
 	color: white;
