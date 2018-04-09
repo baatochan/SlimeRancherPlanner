@@ -91,6 +91,20 @@ var defaultValuesPlots = [
 		'id': 'M5', 'leftPosition': 947, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
 		'id': 'MW', 'leftPosition': 904, 'topPosition': 592, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F1', 'leftPosition': 420, 'topPosition': 640, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F2', 'leftPosition': 510, 'topPosition': 330, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F3', 'leftPosition': 590, 'topPosition': 620, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F4', 'leftPosition': 830, 'topPosition': 270, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F5', 'leftPosition': 830, 'topPosition': 590, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F6', 'leftPosition': 1090, 'topPosition': 560, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F7', 'leftPosition': 1210, 'topPosition': 270, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}
 ];
 
@@ -169,6 +183,7 @@ $(document).ready(function () {
 	calculateBodySize();
 	showPlots();
 	showMaximizedPlots();
+	createSlimeCountTable();
 
 	$(window).resize(reloadSite);
 
@@ -247,6 +262,23 @@ $(document).ready(function () {
 
 	exportMenu.mouseleave(function () {
 		menuText.hide();
+	});
+
+	$('#openSlimeCount').click(function (e) {
+		e.preventDefault();
+		$('#openSlimeCount').hide();
+		$('#slimeCount').show('slow');
+	});
+
+	$('#hideSlimeCount').click(function (e) {
+		e.preventDefault();
+		$('#openSlimeCount').show();
+		$('#slimeCount').hide('slow');
+	});
+
+	$('#refreshSlimeCount').click(function (e) {
+		e.preventDefault();
+		updateSlimeCountTable();
 	});
 });
 
@@ -423,6 +455,7 @@ function showPlots() {
 				plot.find('.plotNumber').text(value.id);
 			plotTemplate.after(plot);
 		}
+		if(typeof value.id === 'string' && value.id.substr(0, 1) === 'F') plot.find('.plot').addClass('plotFreerange');
 		var leftPosition = value.leftPosition + leftOffset - plotBorder;
 		var topPosition = value.topPosition + topOffset - plotBorder;
 		plot.find('.plot').css('left', leftPosition + 'px');
@@ -447,7 +480,7 @@ function showMaximizedPlots() {
 			if (plot.length === 0) {
 				plot = regionTemplate.clone();
 				plot.attr('id', simplifiedName + '-region');
-				plot.css('z-index', -1);
+				plot.css('z-index', -2);
 				regionTemplate.after(plot);
 			}
 			var leftPosition = value.leftPosition + leftOffset - plotBorder;
@@ -507,9 +540,10 @@ function showMaximizedPlots() {
 			plot.find('.plotMaximized').css('top', topPosition + 'px');
 			plot.find('.plotMaximized').removeClass('corral garden coop pond silo incinerator');
 			plot.find('.plotMaximized').addClass(value.type);
+			if(typeof value.id === 'string' && value.id.substr(0, 1) === 'F') plot.find('.plotMaximized').addClass('plotMaximizedFreerange');
 			plot.find('.plotType').text(value.type);
 			plot.find('.plotType').css('display', 'block');
-			if(value.type === 'corral' && value.firstItem !== null && value.secondItem !== null) {
+			if((value.type === 'corral' || value.type === 'freerange') && value.firstItem !== null && value.secondItem !== null) {
 				plot.find('.plotContent').css('display', 'none');
 				plot.find('.corralContentFirstItem').empty();
 				plot.find('.corralContentFirstItem').append($('<img>', {
@@ -542,6 +576,8 @@ function showMaximizedPlots() {
 			plot.attr('title', '');
 			$('#plotA-' + value.id).css('display', 'block');
 		}
+
+		updateSlimeCountTable();
 	});
 
 	var allMaximizedPlots = $('[id^="plotMaximizedA-"]');
@@ -554,6 +590,44 @@ function showMaximizedPlots() {
 	});
 	numberOfItems.mouseleave(function () {
 		$(this).css('opacity', 0.3);
+	});
+}
+
+/**
+ * Fill rows in the slime count table with slimes
+ */
+function createSlimeCountTable() {
+	var st = $.extend(true, [], slimeTypes);
+	st.reverse();
+
+	$.each(st, function (key, value) {
+		var rowTemplate = $('#slimeCountTableRowTemplate');
+		var row = rowTemplate.clone();
+		rowTemplate.after(row);
+		var slimeName = value.replace(/\s/g, "-").toLowerCase();
+		row.attr('id', 'scRow-' + slimeName);
+		row.find('.slimeCountImage').attr('src', 'img/plotItems/' + slimeName + '.png');
+		row.find('.SlimeCountNumber').text(0);
+	});
+}
+
+/**
+ * Count the number of corrals with the slime for every slime in slime count table
+ */
+function updateSlimeCountTable() {
+	$('.slimeCountTableRow').each(function (index) {
+		if ($(this).attr('id') === 'slimeCountTableRowTemplate') return true;
+		var slimeName = $(this).attr('id');
+		slimeName = slimeName.slice(6);
+
+		var numberOfCorrals = 0;
+		$.each(plots, function (key, value) {
+			if (value.occupied === true && (value.type === 'corral' || value.type === 'freerange')) {
+				if (value.firstItem === slimeName || value.secondItem === slimeName) numberOfCorrals++;
+			}
+		});
+
+		$(this).find('.SlimeCountNumber').text(numberOfCorrals);
 	});
 }
 
@@ -574,6 +648,9 @@ function openSetUpForm(e) {
 	if (id.slice(-1) === 'W') {
 		$('#setupPlotNumber').text('- waterfall');
 		hideChoicesForWaterfall();
+	} else if (id.substr(0, 1) === 'F') {
+		$('#setupPlotNumber').text('- freerange');
+		hideChoicesForFreerange()
 	} else {
 		$('#setupPlotNumber').text(id);
 		showAllFirstChoices();
@@ -598,9 +675,12 @@ function openEditForm(e) {
 	var id = $(this).attr('id');
 	id = id.slice(15);
 	$('#editedPlotNumber').val(id);
-	if (id === 'W') {
+	if (id.slice(-1) === 'W') {
 		$('#setupPlotNumber').text('- waterfall');
 		hideChoicesForWaterfall();
+	} else if (id.substr(0, 1) === 'F') {
+		$('#setupPlotNumber').text('- freerange');
+		hideChoicesForFreerange()
 	} else {
 		$('#setupPlotNumber').text(id);
 		showAllFirstChoices();
@@ -648,17 +728,33 @@ function hideChoicesForWaterfall() {
 	$('#firstChoiceCoop').css('display', 'none');
 	$('#firstChoiceSilo').css('display', 'none');
 	$('#firstChoiceIncinerator').css('display', 'none');
+	$('#firstChoicePond').css('display', 'block');
+}
+
+/**
+ * Function that hides all the choices except for unselected and freerange from the first select menu.
+ */
+function hideChoicesForFreerange() {
+	$('#firstChoiceCorral').css('display', 'block');
+	$('#firstChoiceCorral').text('Freerange').attr('value', 'freerange');
+	$('#firstChoicePond').css('display', 'none');
+	$('#firstChoiceGarden').css('display', 'none');
+	$('#firstChoiceCoop').css('display', 'none');
+	$('#firstChoiceSilo').css('display', 'none');
+	$('#firstChoiceIncinerator').css('display', 'none');
 }
 
 /**
  * Function that restores all the choices in the first select menu.
  */
 function showAllFirstChoices() {
+	$('#firstChoiceCorral').text('Corral').attr('value', 'corral');
 	$('#firstChoiceCorral').css('display', 'block');
 	$('#firstChoiceGarden').css('display', 'block');
 	$('#firstChoiceCoop').css('display', 'block');
 	$('#firstChoiceSilo').css('display', 'block');
 	$('#firstChoiceIncinerator').css('display', 'block');
+	$('#firstChoicePond').css('display', 'block');
 }
 
 /**
@@ -684,7 +780,7 @@ function loadSecondAndThirdChoice() {
 	var secondChoice = $('#secondChoice');
 	var thirdChoice = $('#thirdChoice');
 
-	if (chosenFirstValue === 'corral') {
+	if (chosenFirstValue === 'corral' || chosenFirstValue === 'freerange') {
 		secondChoiceLabel.css('display', '');
 		secondChoiceLabel.text('Slime type:');
 		thirdChoiceLabel.css('display', '');
@@ -749,7 +845,7 @@ function updateOptions(type, selectHTML) {
 
 	var array;
 
-	if (type === 'corral') {
+	if (type === 'corral' || type === 'freerange') {
 		array = slimeTypes;
 	} else if (type === 'garden') {
 		array = foodTypes;
@@ -863,7 +959,7 @@ function savePlot() {
 					value.numberOfItems = 0;
 				} else {
 					value.firstItem = chosenSecondValue;
-					if (chosenThirdValue !== 'unselected' && chosenFirstValue === 'corral' && chosenThirdValue !== chosenSecondValue) {
+					if (chosenThirdValue !== 'unselected' && (chosenFirstValue === 'corral' || chosenFirstValue === 'freerange') && chosenThirdValue !== chosenSecondValue) {
 						value.secondItem = chosenThirdValue;
 					} else {
 						value.secondItem = null;

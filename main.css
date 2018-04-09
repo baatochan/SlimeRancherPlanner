@@ -175,6 +175,11 @@ label {
 }
 
 /*noinspection CssUnusedSymbol*/
+.freerange {
+	background-color: rgba(240, 230, 140, 0.7);
+}
+
+/*noinspection CssUnusedSymbol*/
 .coop {
 	background-color: rgba(128, 128, 128, 0.7);
 }
@@ -192,6 +197,11 @@ label {
 /*noinspection CssUnusedSymbol*/
 .incinerator {
 	background-color: rgba(220, 20, 60, 0.7);
+}
+
+/*noinspection CssUnusedSymbol*/
+.plotFreerange {
+	background-color: rgba(240, 230, 140, 0.7);
 }
 
 .plotType {
@@ -281,4 +291,71 @@ label {
 	text-shadow: 0 0 10px white;
 	margin: 0;
 	font-style: italic;
+}
+
+/* Slime Count */
+
+#openSlimeCount {
+	position: absolute;
+	right: 0;
+	top: 150px;
+	border: rgba(0, 0, 0, 1) solid 1px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	padding: 3px 5px;
+	line-height: 1;
+	background-color: rgba(65, 82, 95, 0.7);
+}
+
+#slimeCount {
+	position: absolute;
+	right: 0;
+	top: 150px;
+	border: rgba(0, 0, 0, 1) solid 1px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	line-height: 1;
+	background-color: rgb(65, 82, 95);
+	color: white;
+	padding: 10px;
+	display: none;
+}
+
+#hideSlimeCount {
+	float: right;
+	margin-left: 5px;
+}
+
+#refreshSlimeCount {
+	float: right;
+	width: 20px;
+}
+
+#slimeCountTitle {
+	text-transform: capitalize;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	text-shadow: 0 0 10px black;
+	margin: 0;
+	font-style: italic;
+	margin-bottom: 15px;
+}
+
+#slimeCount table {
+	text-align: center;
+}
+
+#slimeCount table th {
+	font-size: 12px;
+	width: 80px;
+	text-align: center;
+}
+
+#slimeCountTableRowTemplate {
+	display: none;
+}
+
+.slimeCountImage {
+	height: 30px;
 }
