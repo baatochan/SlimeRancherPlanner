@@ -14,97 +14,109 @@ var isNumberOfItemsHidden = false;
 
 var defaultValuesPlots = [
 	{
-		'id': 1, 'leftPosition': 341, 'topPosition': 614, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 1, 'leftPosition': 341, 'topPosition': 564, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 2, 'leftPosition': 341, 'topPosition': 655, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 2, 'leftPosition': 341, 'topPosition': 605, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 3, 'leftPosition': 381, 'topPosition': 614, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 3, 'leftPosition': 381, 'topPosition': 564, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 4, 'leftPosition': 381, 'topPosition': 655, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 4, 'leftPosition': 381, 'topPosition': 605, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 5, 'leftPosition': 441, 'topPosition': 365, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 5, 'leftPosition': 441, 'topPosition': 315, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 6, 'leftPosition': 489, 'topPosition': 268, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 6, 'leftPosition': 489, 'topPosition': 218, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 7, 'leftPosition': 552, 'topPosition': 270, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 7, 'leftPosition': 552, 'topPosition': 220, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 8, 'leftPosition': 561, 'topPosition': 363, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 8, 'leftPosition': 561, 'topPosition': 313, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 9, 'leftPosition': 776, 'topPosition': 192, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 9, 'leftPosition': 776, 'topPosition': 142, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 10, 'leftPosition': 775, 'topPosition': 232, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 10, 'leftPosition': 775, 'topPosition': 182, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 11, 'leftPosition': 893, 'topPosition': 191, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 11, 'leftPosition': 893, 'topPosition': 141, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 12, 'leftPosition': 893, 'topPosition': 232, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 12, 'leftPosition': 893, 'topPosition': 182, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 13, 'leftPosition': 893, 'topPosition': 318, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 13, 'leftPosition': 893, 'topPosition': 268, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 14, 'leftPosition': 934, 'topPosition': 191, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 14, 'leftPosition': 934, 'topPosition': 141, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 15, 'leftPosition': 934, 'topPosition': 232, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 15, 'leftPosition': 934, 'topPosition': 182, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 16, 'leftPosition': 934, 'topPosition': 318, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 16, 'leftPosition': 934, 'topPosition': 268, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 17, 'leftPosition': 1069, 'topPosition': 595, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 17, 'leftPosition': 1069, 'topPosition': 545, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 18, 'leftPosition': 1069, 'topPosition': 648, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 18, 'leftPosition': 1069, 'topPosition': 598, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 19, 'leftPosition': 1108, 'topPosition': 595, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 19, 'leftPosition': 1108, 'topPosition': 545, 'align': 'bottom-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 20, 'leftPosition': 1108, 'topPosition': 648, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 20, 'leftPosition': 1108, 'topPosition': 598, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 21, 'leftPosition': 1150, 'topPosition': 708, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 21, 'leftPosition': 1150, 'topPosition': 658, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 22, 'leftPosition': 1152, 'topPosition': 233, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 22, 'leftPosition': 1152, 'topPosition': 183, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 23, 'leftPosition': 1167, 'topPosition': 305, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 23, 'leftPosition': 1167, 'topPosition': 255, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 24, 'leftPosition': 1218, 'topPosition': 222, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 24, 'leftPosition': 1218, 'topPosition': 172, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 25, 'leftPosition': 1262, 'topPosition': 248, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 25, 'leftPosition': 1262, 'topPosition': 198, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 26, 'leftPosition': 1258, 'topPosition': 325, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 26, 'leftPosition': 1258, 'topPosition': 275, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'W', 'leftPosition': 374, 'topPosition': 570, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'W', 'leftPosition': 374, 'topPosition': 520, 'align': 'bottom-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O1', 'leftPosition': 507, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O1', 'leftPosition': 507, 'topPosition': 468, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O2', 'leftPosition': 545, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O2', 'leftPosition': 545, 'topPosition': 554, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O3', 'leftPosition': 545, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O3', 'leftPosition': 545, 'topPosition': 640, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O4', 'leftPosition': 669, 'topPosition': 518, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O4', 'leftPosition': 669, 'topPosition': 468, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
 		'id': 'O5', 'leftPosition': 631, 'topPosition': 604, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'O6', 'leftPosition': 631, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'O6', 'leftPosition': 631, 'topPosition': 640, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M1', 'leftPosition': 775, 'topPosition': 549, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M1', 'leftPosition': 775, 'topPosition': 510, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M2', 'leftPosition': 775, 'topPosition': 635, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M2', 'leftPosition': 775, 'topPosition': 596, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M3', 'leftPosition': 861, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M3', 'leftPosition': 861, 'topPosition': 472, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M4', 'leftPosition': 861, 'topPosition': 673, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M4', 'leftPosition': 861, 'topPosition': 634, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M5', 'leftPosition': 947, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M5', 'leftPosition': 947, 'topPosition': 472, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'MW', 'leftPosition': 904, 'topPosition': 592, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'MW', 'leftPosition': 904, 'topPosition': 553, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'F1', 'leftPosition': 420, 'topPosition': 640, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'V1', 'leftPosition': 724, 'topPosition': 767, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'F2', 'leftPosition': 510, 'topPosition': 330, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'V2', 'leftPosition': 663, 'topPosition': 828, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'F3', 'leftPosition': 590, 'topPosition': 620, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'V3', 'leftPosition': 699, 'topPosition': 828, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'F4', 'leftPosition': 830, 'topPosition': 270, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'V4', 'leftPosition': 785, 'topPosition': 828, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'F5', 'leftPosition': 830, 'topPosition': 590, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'VW', 'leftPosition': 835, 'topPosition': 742, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'F6', 'leftPosition': 1090, 'topPosition': 560, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'F1', 'leftPosition': 420, 'topPosition': 590, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'F7', 'leftPosition': 1210, 'topPosition': 270, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'F2', 'leftPosition': 510, 'topPosition': 280, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F3', 'leftPosition': 590, 'topPosition': 570, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F4', 'leftPosition': 830, 'topPosition': 220, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F5', 'leftPosition': 830, 'topPosition': 540, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F6', 'leftPosition': 1090, 'topPosition': 510, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F7', 'leftPosition': 1210, 'topPosition': 220, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+	}, {
+		'id': 'F8', 'leftPosition': 638, 'topPosition': 767, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}
 ];
 
@@ -112,9 +124,11 @@ var plots;
 
 var regions = [
 	{
-		'leftPosition': 467, 'topPosition': 454, 'align': 'bottom-right', 'title': "Ogden's Retreat", 'show': true, 'width': 267, 'height': 301, 'background': '33, 86, 60', 'bgSize': 250
+		'leftPosition': 467, 'topPosition': 404, 'align': 'bottom-right', 'title': "Ogden's Retreat", 'show': true, 'width': 267, 'height': 301, 'background': '33, 86, 60', 'bgSize': 250
 	}, {
-		'leftPosition': 740, 'topPosition': 454, 'align': 'bottom-right', 'title': "Mochi's Manor", 'show': true, 'width': 267, 'height': 279, 'background': '116, 129, 145', 'bgSize': 220
+		'leftPosition': 740, 'topPosition': 404, 'align': 'bottom-right', 'title': "Mochi's Manor", 'show': true, 'width': 267, 'height': 301, 'background': '116, 129, 145', 'bgSize': 220
+	}, {
+		'leftPosition': 603, 'topPosition': 710, 'align': 'bottom-right', 'title': "Viktor's Workshop", 'show': true, 'width': 267, 'height': 203, 'background': '50, 96, 158', 'bgSize': 180
 	}
 ];
 
@@ -406,26 +420,26 @@ function reloadSite() {
  * Calculate offset for plot divs (map offset)
  */
 function calculateBodySize() {
-	var actualWidth = window.innerWidth;
-	var actualHeight = window.innerHeight;
+	var actualWidth = $(window).width();
+	var actualHeight = $(window).height();
 
 	if (actualWidth < 1100) {
 		actualWidth = 1100;
 	}
-	if (actualHeight < 600) {
-		actualHeight = 600;
+	if (actualHeight < 750) {
+		actualHeight = 750;
 	}
 
 	var imageWidth = 2762;
 	var imageHeight = 1734;
 
 	var imageLeftOffset = (actualWidth-imageWidth)/2;
-	var imageTopOffset = (actualHeight-imageHeight)/2;
+	var imageTopOffset = ((actualHeight-imageHeight)/2)-50;
 
 	$(document.body).css('background-position', imageLeftOffset + 'px ' + imageTopOffset + 'px');
 
 	leftOffset = (actualWidth-desiredWidth)/2;
-	topOffset = (actualHeight-desiredHeight)/2;
+	topOffset = ((actualHeight-desiredHeight)/2);
 
 	$(document.body).css('width', actualWidth);
 	$(document.body).css('height', actualHeight);
