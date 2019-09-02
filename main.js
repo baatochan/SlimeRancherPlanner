@@ -420,8 +420,8 @@ function reloadSite() {
  * Calculate offset for plot divs (map offset)
  */
 function calculateBodySize() {
-	var actualWidth = window.innerWidth;
-	var actualHeight = window.innerHeight;
+	var actualWidth = $(window).width();
+	var actualHeight = $(window).height();
 
 	if (actualWidth < 1100) {
 		actualWidth = 1100;
