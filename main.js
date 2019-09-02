@@ -92,15 +92,15 @@ var defaultValuesPlots = [
 	}, {
 		'id': 'MW', 'leftPosition': 904, 'topPosition': 603, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'V1', 'leftPosition': 1358, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'V1', 'leftPosition': 724, 'topPosition': 817, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'V2', 'leftPosition': 1297, 'topPosition': 572, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'V2', 'leftPosition': 663, 'topPosition': 878, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'V3', 'leftPosition': 1333, 'topPosition': 572, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'V3', 'leftPosition': 699, 'topPosition': 878, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'V4', 'leftPosition': 1419, 'topPosition': 572, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'V4', 'leftPosition': 785, 'topPosition': 878, 'align': 'top-left', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'VW', 'leftPosition': 1469, 'topPosition': 486, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'VW', 'leftPosition': 835, 'topPosition': 792, 'align': 'top-right', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
 		'id': 'F1', 'leftPosition': 420, 'topPosition': 640, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
@@ -116,7 +116,7 @@ var defaultValuesPlots = [
 	}, {
 		'id': 'F7', 'leftPosition': 1210, 'topPosition': 270, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'F8', 'leftPosition': 1272, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'F8', 'leftPosition': 638, 'topPosition': 817, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}
 ];
 
@@ -128,8 +128,8 @@ var regions = [
 	}, {
 		'leftPosition': 740, 'topPosition': 454, 'align': 'bottom-right', 'title': "Mochi's Manor", 'show': true, 'width': 267, 'height': 301, 'background': '116, 129, 145', 'bgSize': 220
 	}, {
-		'leftPosition': 1237, 'topPosition': 454, 'align': 'bottom-right', 'title': "Viktor's Workshop", 'show': true, 'width': 267, 'height': 203, 'background': '50, 96, 158', 'bgSize': 180
-	}
+		'leftPosition': 603, 'topPosition': 760, 'align': 'bottom-right', 'title': "Viktor's Workshop", 'show': true, 'width': 267, 'height': 203, 'background': '50, 96, 158', 'bgSize': 180
+	}//-634 +306
 ];
 
 var slimeTypes = [
