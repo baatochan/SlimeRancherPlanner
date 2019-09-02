@@ -80,17 +80,17 @@ var defaultValuesPlots = [
 	}, {
 		'id': 'O6', 'leftPosition': 631, 'topPosition': 690, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M1', 'leftPosition': 775, 'topPosition': 549, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M1', 'leftPosition': 775, 'topPosition': 560, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M2', 'leftPosition': 775, 'topPosition': 635, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M2', 'leftPosition': 775, 'topPosition': 646, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M3', 'leftPosition': 861, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M3', 'leftPosition': 861, 'topPosition': 522, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M4', 'leftPosition': 861, 'topPosition': 673, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M4', 'leftPosition': 861, 'topPosition': 684, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'M5', 'leftPosition': 947, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'M5', 'leftPosition': 947, 'topPosition': 522, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
-		'id': 'MW', 'leftPosition': 904, 'topPosition': 592, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
+		'id': 'MW', 'leftPosition': 904, 'topPosition': 603, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
 		'id': 'V1', 'leftPosition': 1358, 'topPosition': 511, 'align': 'center', 'occupied': false, 'type': null, 'firstItem': null, 'secondItem': null, 'description': '', 'numberOfItems': 0
 	}, {
