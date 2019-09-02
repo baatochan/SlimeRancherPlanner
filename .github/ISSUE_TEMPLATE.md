@@ -27,16 +27,14 @@ What happens instead?
 
 ### Context
 
-- Browser (and version) you are using: 
+- Browser (and version) you are using:
 - Operating system you are using:
-- Any other details which might be related to the context
+- Any other details which might be related to the context:
 
 ### Extended description
 
-Try to describe the problem in the most complete way you can add images,
-error messages, hypothesis and observations regarding the problem here.
+Try to describe the problem in the most complete way you can add images, error messages, hypothesis and observations regarding the problem here.
 
 ### Possible solution
 
-If you think you know what causes the problem or if you know a solution for it
-write it here.
+If you think you know what causes the problem or if you know a solution for it write it here.
